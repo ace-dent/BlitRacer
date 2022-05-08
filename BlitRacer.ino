@@ -28,7 +28,7 @@ void blitRace(void) {
 
 // Race the passes...
     testBaseline();     // CPU baseline
-//  testMonopixel();    // Single pixel test
+    testMonopixel();    // Single pixel test
     test8x8Hero(true);  // 8x8 sprite, byte aligned
     test8x8Hero(false); // 8x8 sprite, byte unaligned
 //  testBanner(true);   // Banner test

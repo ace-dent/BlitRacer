@@ -125,7 +125,7 @@ namespace images8x8 {
             0x3B,  // ▓▓░░░▓░░
             0xC4,  // ░░▓▓▓░▓▓
             0x82,  // ░▓▓▓▓▓░▓
-            0x01,  // ▓▓▓▓▓▓▓░
+            0x01   // ▓▓▓▓▓▓▓░
         };
         const uint8_t PROGMEM std1[] = {
             // 8x8 px image
@@ -137,7 +137,7 @@ namespace images8x8 {
             0x3B,  // ▓▓░░░▓░░
             0xC4,  // ░░▓▓▓░▓▓
             0x88,  // ░▓▓▓░▓▓▓
-            0x10,  // ▓▓▓░▓▓▓▓
+            0x10   // ▓▓▓░▓▓▓▓
         };
         const uint8_t PROGMEM std2[] = {
             // 8x8 px image
@@ -163,7 +163,7 @@ namespace images8x8 {
             0x3F,  // ▓▓░░░░░░
             0xC4,  // ░░▓▓▓░▓▓
             0x82,  // ░▓▓▓▓▓░▓
-            0x01,  // ▓▓▓▓▓▓▓░
+            0x01   // ▓▓▓▓▓▓▓░
         };
         const uint8_t PROGMEM std1Mask[] = {
             // 8x8 px image
@@ -175,7 +175,7 @@ namespace images8x8 {
             0x3F,  // ▓▓░░░░░░
             0xC4,  // ░░▓▓▓░▓▓
             0x88,  // ░▓▓▓░▓▓▓
-            0x10,  // ▓▓▓░▓▓▓▓
+            0x10   // ▓▓▓░▓▓▓▓
         };
         const uint8_t PROGMEM std2Mask[] = {
             // 8x8 px image

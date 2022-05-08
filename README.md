@@ -1,7 +1,7 @@
-# Blit Racer 🏁
+# 🏁 Blit Racer 🏁
 
-Race different blitting functions on the Arduboy!
-_Vrooom!!_ The smell of bytes skidding across SPI. 
+Race different blitting functions on the Arduboy!  
+_Vrooom!!_ The sound of bytes tearing across SPI towards the final buffer. 
 
 - All race times are transmitted via serial USB.
 
@@ -10,19 +10,20 @@ _Vrooom!!_ The smell of bytes skidding across SPI.
 
 Essentials (Race Stages):
 
-- [ ] 1x1 pixel
-- [ ] Font
-- [x] 8x8 Hero (with animation)
-- [ ] Chunky sprite (not modulo 8)
-- [ ] Banner
-- [ ] Full screen
+- [x] *1* ~ 1x1 pixel
+- [ ] *2* ~ Font
+- [x] *3* ~ 8x8 Hero (with animation)
+- [ ] *4* ~ Chunky sprite (not modulo 8)
+- [ ] *5* ~ Banner
+- [ ] *6* ~ Full screen
 
 
 Extras:
 
+- [ ] Add text overlay for each test(?)
 - [ ] Splash screen + fun!
 - [ ] Podium / stats at the end of all races.
-- [ ] Record core temperature at start and end of run. Does this affect clock oscillator and correlate to variance? `power_adc_enable(); // Re-enable Analog to Digital Converter module for temperature reading`. [(1](http://web.archive.org/web/20180820131636/http://www.narkidae.com/research/atmega-core-temperature-sensor/) [(2)](https://github.com/MLXXXp/Arduboy2/pull/8/commits/c962257488bc4c8e7f12c66cfcd9e91990151b39).
+- [ ] Record core temperature at start and end of run. Does this affect clock oscillator and correlate to variance? `power_adc_enable(); // Re-enable Analog to Digital Converter module for temperature reading`. [(1)](http://web.archive.org/web/20180820131636/http://www.narkidae.com/research/atmega-core-temperature-sensor/) [(2)](https://github.com/MLXXXp/Arduboy2/pull/8/commits/c962257488bc4c8e7f12c66cfcd9e91990151b39).
 - [ ] Explicitly stop compiler inlining any of the blitting functions. Test benefit of [inlining](https://www.youtube.com/watch?v=kmHyRaiJLpQ)? 
 
 
