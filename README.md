@@ -12,7 +12,7 @@ Essentials (Race Stages):
 
 - [ ] 1x1 pixel
 - [ ] Font
-- [ ] 8x8 Hero (with animation)
+- [x] 8x8 Hero (with animation)
 - [ ] Chunky sprite (not modulo 8)
 - [ ] Banner
 - [ ] Full screen
