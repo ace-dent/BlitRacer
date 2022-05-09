@@ -14,10 +14,10 @@ void setup() {
     arduboy.setFrameRate(30);
     arduboy.clear();
 
-    logConsole(msgSetup, newLine); // "Setup complete.\n"
-    logArduboy(msgSetup);
+    logConsole(text::setup, newLine); // "Setup complete.\n"
+    logArduboy(text::setup);
 
-    blitRace(); // Vroom!
+    blitRace(); // Start your engines!
 }
 
 

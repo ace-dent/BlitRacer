@@ -1,9 +1,9 @@
-# 🏁 Blit Racer 🏁
+# 🏁 - Blit Racer - 🏁
 
 Race different blitting functions on the Arduboy!  
-_Vrooom!!_ The sound of bytes tearing across SPI towards the final buffer. 
+_Vrooom!!_ The sound of bytes tearing across SPI towards the final buffer.  
 
-- All race times are transmitted via serial USB.
+All race times are transmitted via serial USB.
 
 
 ## TODO
@@ -39,7 +39,7 @@ Other formats to add:
 
 Heavily inspired by @SyncChannel's [Arduino_Speed_Tests](https://gist.github.com/SyncChannel/1e509ae9e8a34cc1e56a).
 
-Special thanks to @bateske, @filmote, @joshgoebel, @MLXXXp, @MrBlinky, @Pharap.
+Special thanks to @bateske, @filmote, @javl, @joshgoebel, @MLXXXp, @MrBlinky, @Pharap.
 
 Images converted using:
 

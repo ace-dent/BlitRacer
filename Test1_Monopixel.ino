@@ -10,9 +10,9 @@ void testMonopixel() {
     uint32_t loopCount = 0;         // Keep large integer, as used for CPU baseline
 
     arduboy.clear();
-    logArduboy(msgMonopixTest);
-    logConsole(msgMonopixTest);         // "* Monopixel test    *\n"
-    logConsole(msgTitleBreak);          // "*********************\n\n"
+    logArduboy(text::monopixTest);
+    logConsole(text::monopixTest);          // "* Monopixel test    *\n"
+    logConsole(text::titleBreak);           // "*********************\n\n"
     arduboy.clear();
 
     xStart = 0;
@@ -32,6 +32,28 @@ void testMonopixel() {
                 Sprites::drawOverwrite(x, y+2, images1x1::sprites::std, 0);
                 Sprites::drawOverwrite(x, y+4, images1x1::sprites::std, 0);
                 Sprites::drawOverwrite(x, y+6, images1x1::sprites::std, 0);
+            }
+        }
+        benchEndTime = millis();
+        benchmark(loopCount); // Benchmark for given loops
+        benchAverage = benchAverage + benchResult;
+    }
+    benchAverage /= ((float)4 * (float)3); // 4 function calls x 3 loops
+    logConsole(text::spritesOverwrite);         // "Sprites Overwrite   : "
+    Serial.print(benchAverage,3);               // Result (3 d.p.)
+    logConsole(text::micros, newLine);          // " µs\n"
+
+    // --- SpritesB::drawOverwrite ---
+    benchAverage = (float)0;
+    for (i = 0; i < 3; i = i + 1) {
+        loopCount = 0;
+        benchStartTime = millis();
+        for (y = yStart; y < HEIGHT; y = y + yStep) {
+            for (x = xStart; x < WIDTH; x = x + xStep) {
+                SpritesB::drawOverwrite(x, y, images1x1::sprites::std, 0);
+                SpritesB::drawOverwrite(x, y+2, images1x1::sprites::std, 0);
+                SpritesB::drawOverwrite(x, y+4, images1x1::sprites::std, 0);
+                SpritesB::drawOverwrite(x, y+6, images1x1::sprites::std, 0);
                 loopCount += 1;
             }
         }
@@ -39,12 +61,15 @@ void testMonopixel() {
         benchmark(loopCount); // Benchmark for given loops
         benchAverage = benchAverage + benchResult;
     }
-    benchAverage /= (4.0 * 3.0); // 4 function calls x 3 loops
-    logConsole(msgSpritesOverwrite);  // "Sprites Overwrite   : "
-    Serial.print(benchAverage,3);     // Result (3 d.p.)
-    logConsole(msgMicros, newLine);   // " µs\n"
-    
-    
+    benchAverage /= ((float)4 * (float)3); // 4 function calls x 3 loops
+    logConsole(text::spritesBOverwrite);        // "Sprites Overwrite   : "
+    Serial.print(benchAverage,3);               // Result (3 d.p.)
+    logConsole(text::micros, newLine);          // " µs\n"
+
+
+    /* --- */
+
+
     // --- Sprites::drawErase ---
     benchAverage = 0.0;
     arduboy.fillScreen(WHITE); // Subtract the inverted sprite from 'white' screen
@@ -71,9 +96,9 @@ void testMonopixel() {
     arduboy.invert(false); // Restore display
     arduboy.display();
     benchAverage /= (4.0 * 3.0); // 4 function calls x 3 loops
-    logConsole(msgSpritesErase);  // "Sprites Erase       : "
-    Serial.print(benchAverage,3);     // Result (3 d.p.)
-    logConsole(msgMicros, newLine);            // " µs\n"
+    logConsole(text::spritesErase);             // "Sprites Erase       : "
+    Serial.print(benchAverage,3);               // Result (3 d.p.)
+    logConsole(text::micros, newLine);          // " µs\n"
     
     
     // --- Sprites::drawSelfMasked ---
@@ -95,9 +120,9 @@ void testMonopixel() {
         benchAverage = benchAverage + benchResult;
     }
     benchAverage /= (4.0 * 3.0); // 4 function calls x 3 loops
-    logConsole(msgSpritesSelfMask);  // "Sprites Self masked : "
-    Serial.print(benchAverage,3);     // Result (3 d.p.)
-    logConsole(msgMicros);            // " µs\n"
+    logConsole(text::spritesSelfMask);          // "Sprites Self masked : "
+    Serial.print(benchAverage,3);               // Result (3 d.p.)
+    logConsole(text::micros);                   // " µs\n"
     
     
     // --- arduboy.drawBitmap ~ Sprites::drawSelfMasked ---
@@ -119,9 +144,9 @@ void testMonopixel() {
         benchAverage = benchAverage + benchResult; // Update the running average
     }
     benchAverage /= (4.0 * 3.0); // 4 function calls x 3 loops
-    logConsole(msgBitmapsStd);        // "Bitmaps Standard    : "
-    Serial.print(benchAverage,3);     // Result (3 d.p.)
-    logConsole(msgMicros);            // " µs\n"
+    logConsole(text::bitmapsStd);               // "Bitmaps Standard    : "
+    Serial.print(benchAverage,3);               // Result (3 d.p.)
+    logConsole(text::micros);                   // " µs\n"
     
     
     // --- arduboy.drawSlowXYBitmap ~  Sprites::drawSelfMasked ---
@@ -143,9 +168,9 @@ void testMonopixel() {
         benchAverage = benchAverage + benchResult; // Update the running average
     }
     benchAverage /= (4.0 * 3.0); // 4 function calls x 3 loops
-    logConsole(msgBitmapsSlow);       // "Bitmaps Slow XY     : "
-    Serial.print(benchAverage,3);     // Result (3 d.p.)
-    logConsole(msgMicros);            // " µs\n"
+    logConsole(text::bitmapsSlow);              // "Bitmaps Slow XY     : "
+    Serial.print(benchAverage,3);               // Result (3 d.p.)
+    logConsole(text::micros);                   // " µs\n"
     
     
     // --- arduboy.drawCompressed ~  Sprites::drawSelfMasked ---
@@ -167,9 +192,9 @@ void testMonopixel() {
         benchAverage = benchAverage + benchResult; // Update the running average
     }
     benchAverage /= (4.0 * 3.0); // 4 function calls x 3 loops
-    logConsole(msgBitmapsComp);       // "Bitmaps Compressed  : "
-    Serial.print(benchAverage,3);     // Result (3 d.p.)
-    logConsole(msgMicros, newLine);   // " µs\n"
+    logConsole(text::bitmapsComp);              // "Bitmaps Compressed  : "
+    Serial.print(benchAverage,3);               // Result (3 d.p.)
+    logConsole(text::micros, newLine);          // " µs\n"
     
     
     
@@ -193,9 +218,9 @@ void testMonopixel() {
         benchAverage = benchAverage + benchResult;
     }
     benchAverage /= (4.0 * 3.0); // 4 function calls x 3 loops
-    logConsole(msgSpritesExtMask);    // "Sprites Ext' mask   : "
-    Serial.print(benchAverage,3);     // Result (3 d.p.)
-    logConsole(msgMicros);            // " µs\n"
+    logConsole(text::spritesExtMask);           // "Sprites Ext' mask   : "
+    Serial.print(benchAverage,3);               // Result (3 d.p.)
+    logConsole(text::micros);                   // " µs\n"
     
     
     // --- Sprites::drawPlusMask ---
@@ -217,9 +242,9 @@ void testMonopixel() {
         benchAverage = benchAverage + benchResult; // Update the running average
     }
     benchAverage /= (4.0 * 3.0); // 4 function calls x 3 loops
-    logConsole(msgSpritesPlusMask);   // "Sprites Plus mask   : "
-    Serial.print(benchAverage,3);     // Result (3 d.p.)
-    logConsole(msgMicros);            // " µs\n"
+    logConsole(text::spritesPlusMask);          // "Sprites Plus mask   : "
+    Serial.print(benchAverage,3);               // Result (3 d.p.)
+    logConsole(text::micros);                   // " µs\n"
     
     
     // --- Sprites::drawSelfMasked with extra masking step ---
@@ -245,9 +270,9 @@ void testMonopixel() {
         benchAverage = benchAverage + benchResult; // Update the running average
     }
     benchAverage /= (4.0 * 3.0); // 4 function calls x 3 loops
-    logConsole(msgSpritesEraseMasked);// "Sprites Self w/mask : "
-    Serial.print(benchAverage,3);     // Result (3 d.p.)
-    logConsole(msgMicros);            // " µs\n"
+    logConsole(text::spritesEraseMasked);       // "Sprites Self w/mask : "
+    Serial.print(benchAverage,3);               // Result (3 d.p.)
+    logConsole(text::micros);                   // " µs\n"
     
     
     // --- arduboy.drawBitmap with extra masking step ---
@@ -273,9 +298,9 @@ void testMonopixel() {
         benchAverage = benchAverage + benchResult; // Update the running average
     }
     benchAverage /= (4.0 * 3.0); // 4 function calls x 3 loops
-    logConsole(msgBitmapsStdMasked);  // "Bitmaps Std w/mask  : "
-    Serial.print(benchAverage,3);     // Result (3 d.p.)
-    logConsole(msgMicros);            // " µs\n"
+    logConsole(text::bitmapsStdMasked);         // "Bitmaps Std w/mask  : "
+    Serial.print(benchAverage,3);               // Result (3 d.p.)
+    logConsole(text::micros);                   // " µs\n"
     
     
     // --- arduboy.drawSlowXYBitmap with extra masking step ---
@@ -301,9 +326,9 @@ void testMonopixel() {
         benchAverage = benchAverage + benchResult; // Update the running average
     }
     benchAverage /= (4.0 * 3.0); // 4 function calls x 3 loops
-    logConsole(msgBitmapsSlowMasked); // "Bitmaps Slow w/mask : "
-    Serial.print(benchAverage,3);     // Result (3 d.p.)
-    logConsole(msgMicros);            // " µs\n"
+    logConsole(text::bitmapsSlowMasked);        // "Bitmaps Slow w/mask : "
+    Serial.print(benchAverage,3);               // Result (3 d.p.)
+    logConsole(text::micros);                   // " µs\n"
     
     
     // --- arduboy.drawCompressed with extra masking step ---
@@ -329,11 +354,11 @@ void testMonopixel() {
         benchAverage = benchAverage + benchResult; // Update the running average
     }
     benchAverage /= (4.0 * 3.0); // 4 function calls x 3 loops
-    logConsole(msgBitmapsCompMasked); // "Bitmaps Comp w/mask : "
-    Serial.print(benchAverage,3);     // Result (3 d.p.)
-    logConsole(msgMicros);            // " µs\n"
+    logConsole(text::bitmapsCompMasked);        // "Bitmaps Comp w/mask : "
+    Serial.print(benchAverage,3);               // Result (3 d.p.)
+    logConsole(text::micros);                   // " µs\n"
     
     
-    logConsole(msgHorizontalRule);    // "---------------------\n\n"
+    logConsole(text::horizontalRule);           // "---------------------\n\n"
     
 }

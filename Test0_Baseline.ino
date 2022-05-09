@@ -4,15 +4,15 @@
 
 void testBaseline(void) {
 
-    logArduboy(msgBaselineTest);
-    logConsole(msgBaselineTest);      // "* CPU baseline test *\n"
-    logConsole(msgTitleBreak);        // "*********************\n\n"
-    logConsole(msgFCPU);              // "F_CPU = "
-    Serial.print(F_CPU,DEC);          // 16000000 (expected)
-    logConsole(msgHertz);             // " Hz\n"
-    logConsole(msgOneCycle);          // "1 cycle             : "
-    Serial.print((1000000.0/(float)F_CPU),4); // 0.0625 (625ns expected)
-    logConsole(msgMicros);            // " µs\n"
+    logArduboy(text::baselineTest);
+    logConsole(text::baselineTest);             // "* CPU baseline test *\n"
+    logConsole(text::titleBreak);               // "*********************\n\n"
+    logConsole(text::FCPU);                     // "F_CPU = "
+    Serial.print(F_CPU,DEC);                    // 16000000 (expected)
+    logConsole(text::hertz);                    // " Hz\n"
+    logConsole(text::oneCycle);                 // "1 cycle             : "
+    Serial.print((1000000.0/(float)F_CPU),4);   // 0.0625 (625ns expected)
+    logConsole(text::micros);                   // " µs\n"
 
     benchStartTime = millis();
 
@@ -53,9 +53,9 @@ void testBaseline(void) {
     benchResult = benchResult - benchOverhead; // Remove overhead from results
     benchResult = benchResult / 20.0; // Determine the result for an individual instruction
 
-    logConsole(msgNop);               // "nop                 : "
-    Serial.print(benchResult,4);      // ~0.0625 (625ns expected)
-    logConsole(msgMicros);            // " µs\n"
+    logConsole(text::nop);                  // "nop                 : "
+    Serial.print(benchResult,4);            // ~0.0625 (625ns expected)
+    logConsole(text::micros);               // " µs\n"
 
 
     // Determine the overhead for incrementing a loop counter
@@ -72,9 +72,9 @@ void testBaseline(void) {
     benchResult = benchResult - benchOverhead; // Remove loop overhead from results
     benchOverhead += benchResult; // Include the time for incrementing the loop counter       
 
-    logConsole(msgLoopOverhead);      // "Loop overhead       : "
-    Serial.print(benchOverhead,4);    // ~1.6 (expected)
-    logConsole(msgMicros);            // " µs\n"
+    logConsole(text::loopOverhead);         // "Loop overhead       : "
+    Serial.print(benchOverhead,4);          // ~1.6 (expected)
+    logConsole(text::micros);               // " µs\n"
 
-    logConsole(msgHorizontalRule);    // "---------------------\n\n"
+    logConsole(text::horizontalRule);       // "---------------------\n\n"
 }
