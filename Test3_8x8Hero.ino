@@ -129,7 +129,7 @@ void test8x8Hero(bool byteAligned) {
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
-                arduboy.drawBitmap(x, y, images8x8::bitmaps::std[i], kHeroWidth, kHeroHeight, WHITE);
+                arduboy.drawBitmap(x, y, images8x8::bitmaps::std[i], heroWidth, heroHeight, WHITE);
                 loopCount += 1;
             }
         }
@@ -150,7 +150,7 @@ void test8x8Hero(bool byteAligned) {
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
-                arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slow[i], kHeroWidth, kHeroHeight, WHITE);
+                arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slow[i], heroWidth, heroHeight, WHITE);
                 loopCount += 1;
             }
         }
@@ -258,8 +258,8 @@ void test8x8Hero(bool byteAligned) {
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
-                arduboy.drawBitmap(x, y, images8x8::bitmaps::stdMask[i], kHeroWidth, kHeroHeight, BLACK);
-                arduboy.drawBitmap(x, y, images8x8::bitmaps::std[i], kHeroWidth, kHeroHeight, WHITE);
+                arduboy.drawBitmap(x, y, images8x8::bitmaps::stdMask[i], heroWidth, heroHeight, BLACK);
+                arduboy.drawBitmap(x, y, images8x8::bitmaps::std[i], heroWidth, heroHeight, WHITE);
                 loopCount += 1;
             }
         }
@@ -280,8 +280,8 @@ void test8x8Hero(bool byteAligned) {
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
-                arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slowMask[i], kHeroWidth, kHeroHeight, BLACK);
-                arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slow[i], kHeroWidth, kHeroHeight, WHITE);
+                arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slowMask[i], heroWidth, heroHeight, BLACK);
+                arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slow[i], heroWidth, heroHeight, WHITE);
                 loopCount += 1;
             }
         }

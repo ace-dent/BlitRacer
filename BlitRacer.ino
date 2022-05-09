@@ -1,10 +1,10 @@
 #include <Arduboy2.h>
 Arduboy2 arduboy;
-Sprites sprites;
 
 #include "src/images/Images.h"
 #include "src/utils/Messages.h"
 #include "src/utils/Utils.h"
+
 
 void setup() {
   
@@ -24,7 +24,7 @@ void setup() {
 void loop() {} // Blank
 
 
-void blitRace(void) {
+void blitRace() {
 
 // Race the passes...
     testBaseline();     // CPU baseline

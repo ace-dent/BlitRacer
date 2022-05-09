@@ -9,8 +9,8 @@
 #include <avr/pgmspace.h> // For PROGMEM
 
 
-constexpr uint8_t kMonopixWidth = 1;
-constexpr uint8_t kMonopixHeight = 1;
+constexpr uint8_t monopixWidth = 1;
+constexpr uint8_t monopixHeight = 1;
 
 
 namespace images1x1 {
@@ -18,17 +18,17 @@ namespace images1x1 {
     namespace sprites {
 
         const uint8_t PROGMEM std[] = {
-            kMonopixWidth, kMonopixHeight, // 1x1 px image
+            monopixWidth, monopixHeight, // 1x1 px image
             0x01   // ▓▓▓▓▓▓▓░
         };
 
         const uint8_t PROGMEM mask[] = {
-            kMonopixWidth, kMonopixHeight, // 1x1 px image
+            monopixWidth, monopixHeight, // 1x1 px image
             0x01   // ▓▓▓▓▓▓▓░
         };
 
         const uint8_t PROGMEM plusMask[] = {
-            kMonopixWidth, kMonopixHeight, // 1x1 px image
+            monopixWidth, monopixHeight, // 1x1 px image
             0x01, 0x01   // ▓▓▓▓▓▓▓░ Image  ▓▓▓▓▓▓▓░ +Mask  ·······░ Sprite            
         };
 
@@ -57,12 +57,12 @@ namespace images1x1 {
         };
 
         const uint8_t PROGMEM cabi[] = {
-            (kMonopixWidth-1), (kMonopixHeight-1), // 1x1 px image
+            (monopixWidth-1), (monopixHeight-1), // 1x1 px image
             0xd3
         };
 
         const uint8_t PROGMEM cabiMask[] = {
-            (kMonopixWidth-1), (kMonopixHeight-1), // 1x1 px image
+            (monopixWidth-1), (monopixHeight-1), // 1x1 px image
             0xd3
         };
 

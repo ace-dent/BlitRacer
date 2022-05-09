@@ -10,15 +10,15 @@
 #include <avr/pgmspace.h> // For PROGMEM
 
 
-constexpr uint8_t kHeroWidth = 8;
-constexpr uint8_t kHeroHeight = 8;
+constexpr uint8_t heroWidth = 8;
+constexpr uint8_t heroHeight = 8;
 
 namespace images8x8 {
 
     namespace sprites {
 
         const uint8_t PROGMEM std[] = {
-            kHeroWidth, kHeroHeight,  // 8x8 px images
+            heroWidth, heroHeight,  // 8x8 px images
             // Frame 0 - Hero jumping
             0x01,  // ▓▓▓▓▓▓▓░
             0x82,  // ░▓▓▓▓▓░▓
@@ -81,7 +81,7 @@ namespace images8x8 {
 
 
         const uint8_t PROGMEM plusMask[] = {
-            kHeroWidth, kHeroHeight,  // 8x8 px images
+            heroWidth, heroHeight,  // 8x8 px images
             // Frame 0 - Hero jumping
             0x01, 0x01,  // ▓▓▓▓▓▓▓░ Image  ▓▓▓▓▓▓▓░ +Mask  ·······░ Sprite
             0x82, 0x82,  // ░▓▓▓▓▓░▓        ░▓▓▓▓▓░▓        ░·····░·
@@ -270,17 +270,17 @@ namespace images8x8 {
 
 
         const uint8_t PROGMEM cabi0[] = {
-            (kHeroWidth-1), (kHeroHeight-1),  // 8x8 px image
+            (heroWidth-1), (heroHeight-1),  // 8x8 px image
             // Frame 0 - Hero jumping
             0xF3, 0xC9, 0x4E, 0xB9, 0xD4, 0xA7, 0x5C, 0xEA, 0x92, 0x6B
         };
         const uint8_t PROGMEM cabi1[] = {
-            (kHeroWidth-1), (kHeroHeight-1),  // 8x8 px image
+            (heroWidth-1), (heroHeight-1),  // 8x8 px image
             // Frame 1 - Hero standing
             0x5C, 0x36, 0xD5, 0x29, 0x97, 0xFA, 0x94, 0x4B, 0xAD, 0x52, 0xB9, 0x14
         };
         const uint8_t PROGMEM cabi2[] = {
-            (kHeroWidth-1), (kHeroHeight-1),  // 8x8 px image
+            (heroWidth-1), (heroHeight-1),  // 8x8 px image
             // Frame 2 - Hero sitting
             0xEC, 0xB2, 0x72, 0xDD, 0xA7, 0x3E, 0xE5, 0x3A, 0x59, 0xD9, 0x01
         };
@@ -289,17 +289,17 @@ namespace images8x8 {
         };
 
         const uint8_t PROGMEM cabi0Mask[] = {
-            (kHeroWidth-1), (kHeroHeight-1),  // 8x8 px image
+            (heroWidth-1), (heroHeight-1),  // 8x8 px image
             // Frame 0 - Hero jumping (mask)
             0xF3, 0xC9, 0x4E, 0xF9, 0xAD, 0x4B, 0x5D, 0x72, 0x0D
         };
         const uint8_t PROGMEM cabi1Mask[] = {
-            (kHeroWidth-1), (kHeroHeight-1),  // 8x8 px image
+            (heroWidth-1), (heroHeight-1),  // 8x8 px image
             // Frame 1 - Hero standing (mask)
             0x5C, 0x36, 0xD5, 0x29, 0xBF, 0x75, 0xA9, 0x55, 0x2A, 0x97, 0x02
         };
         const uint8_t PROGMEM cabi2Mask[] = {
-            (kHeroWidth-1), (kHeroHeight-1),  // 8x8 px image
+            (heroWidth-1), (heroHeight-1),  // 8x8 px image
             // Frame 2 - Hero sitting (mask)
             0xEC, 0xB2, 0x72, 0xDD, 0x76, 0xEB, 0x3A, 0x59, 0xD9, 0x01
         };

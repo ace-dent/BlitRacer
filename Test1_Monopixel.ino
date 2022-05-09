@@ -132,10 +132,10 @@ void testMonopixel() {
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
-                arduboy.drawBitmap(x, y, images1x1::bitmaps::std, kMonopixWidth, kMonopixHeight, WHITE);
-                arduboy.drawBitmap(x, y+2, images1x1::bitmaps::std, kMonopixWidth, kMonopixHeight, WHITE);
-                arduboy.drawBitmap(x, y+4, images1x1::bitmaps::std, kMonopixWidth, kMonopixHeight, WHITE);
-                arduboy.drawBitmap(x, y+6, images1x1::bitmaps::std, kMonopixWidth, kMonopixHeight, WHITE);
+                arduboy.drawBitmap(x, y, images1x1::bitmaps::std, monopixWidth, monopixHeight, WHITE);
+                arduboy.drawBitmap(x, y+2, images1x1::bitmaps::std, monopixWidth, monopixHeight, WHITE);
+                arduboy.drawBitmap(x, y+4, images1x1::bitmaps::std, monopixWidth, monopixHeight, WHITE);
+                arduboy.drawBitmap(x, y+6, images1x1::bitmaps::std, monopixWidth, monopixHeight, WHITE);
                 loopCount += 1;
             }
         }
@@ -156,10 +156,10 @@ void testMonopixel() {
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
-                arduboy.drawSlowXYBitmap(x, y, images1x1::bitmaps::slow, kMonopixWidth, kMonopixHeight, WHITE);
-                arduboy.drawSlowXYBitmap(x, y+2, images1x1::bitmaps::slow, kMonopixWidth, kMonopixHeight, WHITE);
-                arduboy.drawSlowXYBitmap(x, y+4, images1x1::bitmaps::slow, kMonopixWidth, kMonopixHeight, WHITE);
-                arduboy.drawSlowXYBitmap(x, y+6, images1x1::bitmaps::slow, kMonopixWidth, kMonopixHeight, WHITE);
+                arduboy.drawSlowXYBitmap(x, y, images1x1::bitmaps::slow, monopixWidth, monopixHeight, WHITE);
+                arduboy.drawSlowXYBitmap(x, y+2, images1x1::bitmaps::slow, monopixWidth, monopixHeight, WHITE);
+                arduboy.drawSlowXYBitmap(x, y+4, images1x1::bitmaps::slow, monopixWidth, monopixHeight, WHITE);
+                arduboy.drawSlowXYBitmap(x, y+6, images1x1::bitmaps::slow, monopixWidth, monopixHeight, WHITE);
                 loopCount += 1;
             }
         }
@@ -282,14 +282,14 @@ void testMonopixel() {
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
-                arduboy.drawBitmap(x, y, images1x1::bitmaps::stdMask, kMonopixWidth, kMonopixHeight, BLACK);
-                arduboy.drawBitmap(x, y, images1x1::bitmaps::std, kMonopixWidth, kMonopixHeight, WHITE);
-                arduboy.drawBitmap(x, y+2, images1x1::bitmaps::stdMask, kMonopixWidth, kMonopixHeight, BLACK);
-                arduboy.drawBitmap(x, y+2, images1x1::bitmaps::std, kMonopixWidth, kMonopixHeight, WHITE);
-                arduboy.drawBitmap(x, y+4, images1x1::bitmaps::stdMask, kMonopixWidth, kMonopixHeight, BLACK);
-                arduboy.drawBitmap(x, y+4, images1x1::bitmaps::std, kMonopixWidth, kMonopixHeight, WHITE);
-                arduboy.drawBitmap(x, y+6, images1x1::bitmaps::stdMask, kMonopixWidth, kMonopixHeight, BLACK);
-                arduboy.drawBitmap(x, y+6, images1x1::bitmaps::std, kMonopixWidth, kMonopixHeight, WHITE);
+                arduboy.drawBitmap(x, y, images1x1::bitmaps::stdMask, monopixWidth, monopixHeight, BLACK);
+                arduboy.drawBitmap(x, y, images1x1::bitmaps::std, monopixWidth, monopixHeight, WHITE);
+                arduboy.drawBitmap(x, y+2, images1x1::bitmaps::stdMask, monopixWidth, monopixHeight, BLACK);
+                arduboy.drawBitmap(x, y+2, images1x1::bitmaps::std, monopixWidth, monopixHeight, WHITE);
+                arduboy.drawBitmap(x, y+4, images1x1::bitmaps::stdMask, monopixWidth, monopixHeight, BLACK);
+                arduboy.drawBitmap(x, y+4, images1x1::bitmaps::std, monopixWidth, monopixHeight, WHITE);
+                arduboy.drawBitmap(x, y+6, images1x1::bitmaps::stdMask, monopixWidth, monopixHeight, BLACK);
+                arduboy.drawBitmap(x, y+6, images1x1::bitmaps::std, monopixWidth, monopixHeight, WHITE);
                 loopCount += 1;
             }
         }
@@ -310,14 +310,14 @@ void testMonopixel() {
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
-                arduboy.drawSlowXYBitmap(x, y, images1x1::bitmaps::slowMask, kMonopixWidth, kMonopixHeight, BLACK);
-                arduboy.drawSlowXYBitmap(x, y, images1x1::bitmaps::slow, kMonopixWidth, kMonopixHeight, WHITE);
-                arduboy.drawSlowXYBitmap(x, y+2, images1x1::bitmaps::slowMask, kMonopixWidth, kMonopixHeight, BLACK);
-                arduboy.drawSlowXYBitmap(x, y+2, images1x1::bitmaps::slow, kMonopixWidth, kMonopixHeight, WHITE);
-                arduboy.drawSlowXYBitmap(x, y+4, images1x1::bitmaps::slowMask, kMonopixWidth, kMonopixHeight, BLACK);
-                arduboy.drawSlowXYBitmap(x, y+4, images1x1::bitmaps::slow, kMonopixWidth, kMonopixHeight, WHITE);
-                arduboy.drawSlowXYBitmap(x, y+6, images1x1::bitmaps::slowMask, kMonopixWidth, kMonopixHeight, BLACK);
-                arduboy.drawSlowXYBitmap(x, y+6, images1x1::bitmaps::slow, kMonopixWidth, kMonopixHeight, WHITE);
+                arduboy.drawSlowXYBitmap(x, y, images1x1::bitmaps::slowMask, monopixWidth, monopixHeight, BLACK);
+                arduboy.drawSlowXYBitmap(x, y, images1x1::bitmaps::slow, monopixWidth, monopixHeight, WHITE);
+                arduboy.drawSlowXYBitmap(x, y+2, images1x1::bitmaps::slowMask, monopixWidth, monopixHeight, BLACK);
+                arduboy.drawSlowXYBitmap(x, y+2, images1x1::bitmaps::slow, monopixWidth, monopixHeight, WHITE);
+                arduboy.drawSlowXYBitmap(x, y+4, images1x1::bitmaps::slowMask, monopixWidth, monopixHeight, BLACK);
+                arduboy.drawSlowXYBitmap(x, y+4, images1x1::bitmaps::slow, monopixWidth, monopixHeight, WHITE);
+                arduboy.drawSlowXYBitmap(x, y+6, images1x1::bitmaps::slowMask, monopixWidth, monopixHeight, BLACK);
+                arduboy.drawSlowXYBitmap(x, y+6, images1x1::bitmaps::slow, monopixWidth, monopixHeight, WHITE);
                 loopCount += 1;
             }
         }
