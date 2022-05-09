@@ -35,7 +35,7 @@ void test8x8Hero(bool byteAligned) {
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = yStart; x < WIDTH; x = x + xStep) {
+            for (x = xStart; x < WIDTH; x = x + xStep) {
                 Sprites::drawOverwrite(x, y, images8x8::sprites::std, i);
                 loopCount += 1;
             }
@@ -59,7 +59,7 @@ void test8x8Hero(bool byteAligned) {
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = yStart; x < WIDTH; x = x + xStep) {
+            for (x = xStart; x < WIDTH; x = x + xStep) {
                 Sprites::drawErase(x, y, images8x8::sprites::std, i);
                 loopCount += 1;
             }
@@ -84,7 +84,7 @@ void test8x8Hero(bool byteAligned) {
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = yStart; x < WIDTH; x = x + xStep) {
+            for (x = xStart; x < WIDTH; x = x + xStep) {
                 Sprites::drawSelfMasked(x, y, images8x8::sprites::std, i);
                 loopCount += 1;
             }
@@ -105,7 +105,7 @@ void test8x8Hero(bool byteAligned) {
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = yStart; x < WIDTH; x = x + xStep) {
+            for (x = xStart; x < WIDTH; x = x + xStep) {
                 arduboy.drawBitmap(x, y, images8x8::bitmaps::std[i], kHeroWidth, kHeroHeight, WHITE);
                 loopCount += 1;
             }
@@ -126,7 +126,7 @@ void test8x8Hero(bool byteAligned) {
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = yStart; x < WIDTH; x = x + xStep) {
+            for (x = xStart; x < WIDTH; x = x + xStep) {
                 arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slow[i], kHeroWidth, kHeroHeight, WHITE);
                 loopCount += 1;
             }
@@ -147,7 +147,7 @@ void test8x8Hero(bool byteAligned) {
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = yStart; x < WIDTH; x = x + xStep) {
+            for (x = xStart; x < WIDTH; x = x + xStep) {
                 arduboy.drawCompressed(x, y, images8x8::bitmaps::cabi[i], WHITE);
                 loopCount += 1;
             }
@@ -170,7 +170,7 @@ void test8x8Hero(bool byteAligned) {
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = yStart; x < WIDTH; x = x + xStep) {
+            for (x = xStart; x < WIDTH; x = x + xStep) {
                 Sprites::drawExternalMask(x, y, images8x8::sprites::std, images8x8::sprites::mask, i, i);
                 loopCount += 1;
             }
@@ -191,7 +191,7 @@ void test8x8Hero(bool byteAligned) {
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = yStart; x < WIDTH; x = x + xStep) {
+            for (x = xStart; x < WIDTH; x = x + xStep) {
                 Sprites::drawPlusMask(x, y, images8x8::sprites::plusMask, i);
                 loopCount += 1;
             }
@@ -212,7 +212,7 @@ void test8x8Hero(bool byteAligned) {
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = yStart; x < WIDTH; x = x + xStep) {
+            for (x = xStart; x < WIDTH; x = x + xStep) {
                 Sprites::drawErase(x, y, images8x8::sprites::mask, i);
                 Sprites::drawSelfMasked(x, y, images8x8::sprites::std, i);
                 loopCount += 1;
@@ -234,7 +234,7 @@ void test8x8Hero(bool byteAligned) {
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = yStart; x < WIDTH; x = x + xStep) {
+            for (x = xStart; x < WIDTH; x = x + xStep) {
                 arduboy.drawBitmap(x, y, images8x8::bitmaps::stdMask[i], kHeroWidth, kHeroHeight, BLACK);
                 arduboy.drawBitmap(x, y, images8x8::bitmaps::std[i], kHeroWidth, kHeroHeight, WHITE);
                 loopCount += 1;
@@ -256,7 +256,7 @@ void test8x8Hero(bool byteAligned) {
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = yStart; x < WIDTH; x = x + xStep) {
+            for (x = xStart; x < WIDTH; x = x + xStep) {
                 arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slowMask[i], kHeroWidth, kHeroHeight, BLACK);
                 arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slow[i], kHeroWidth, kHeroHeight, WHITE);
                 loopCount += 1;
@@ -278,7 +278,7 @@ void test8x8Hero(bool byteAligned) {
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = yStart; x < WIDTH; x = x + xStep) {
+            for (x = xStart; x < WIDTH; x = x + xStep) {
                 arduboy.drawCompressed(x, y, images8x8::bitmaps::cabiMask[i], BLACK);
                 arduboy.drawCompressed(x, y, images8x8::bitmaps::cabi[i], WHITE);
                 loopCount += 1;
