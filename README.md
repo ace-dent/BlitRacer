@@ -1,10 +1,66 @@
 # 🏁 - Blit Racer - 🏁
 
-Race different blitting functions on the Arduboy!  
+Race different blitting functions on the Arduboy®!  
 _Vrooom!!_ The sound of bytes tearing across SPI towards the final buffer.  
 
-All race times are transmitted via serial USB.
+All race times are transmitted via serial USB.  
 
+
+## Choose your vehicle
+
+There are many ways to draw a bitmap image on the Arduboy®.
+These blitting functions are grouped by rendering effect:
+
+**Overwrite** (replaces any underlying background with new image data)
+
+- `Sprites::drawOverwrite` 
+- `SpritesB::drawOverwrite` 
+- `FX::drawBitmap(,,,,dbmOverwrite)` (identical to `FX::drawBitmap(,,,,dbmNormal)`)
+- `FX::drawBitmap(,,,,dbmReverse)` (equivalent with inverted graphics)
+
+
+**Self masked** (only binary `1` in the new image replaces the underlying background)
+
+- `Sprites::drawErase` (equivalent with inverted graphics)
+- `SpritesB::drawErase` (equivalent with inverted graphics)
+- `FX::drawBitmap(,,,,dbmBlack)` (equivalent with inverted graphics)
+- `Sprites::drawSelfMasked`
+- `SpritesB::drawSelfMasked`
+- `FX::drawBitmap(,,,,dbmWhite)`
+- `arduboy.drawBitmap`
+- `arduboy.drawSlowXYBitmap`
+- `arduboy.drawCompressed`
+
+
+**Fully masked** (new images can have black, white or transparent pixels)
+
+- `Sprites::drawExternalMask`
+- `SpritesB::drawExternalMask` 
+- `Sprites::drawPlusMask`
+- `SpritesB::drawPlusMask`
+- `FX::drawBitmap(,,,,dbmMasked)`
+- `Sprites::drawSelfMasked` (with extra masking step `drawErase` for black pixels)
+- `FX::drawBitmap(,,,,dbmWhite)` (with extra masking step `dbmBlack` for black pixels)
+- `arduboy.drawBitmap` (with extra masking step for black pixels)
+- `arduboy.drawSlowXYBitmap` (with extra masking step for black pixels)
+- `arduboy.drawCompressed` (with extra masking step for black pixels)
+
+**Special effects**
+
+- `FX::drawBitmap(,,,,dbmInvert)` (Inverts the background using the new image)
+
+
+## Race stages
+
+Some blitting functions perform better with different content. 
+A range of conditions (dimensions, frames of animation, byte alignment on rendering, etc.) are tested.
+
+1. Monopixel (1x1px)
+2. 
+3. 'Hero' sprite (8x8px)
+4. 
+5. 
+6. 
 
 ## TODO
 
@@ -46,3 +102,10 @@ Images converted using:
  - [ABSpriteEditor](https://github.com/Pharap/ABSpriteEditor)
  - [image2cpp](http://javl.github.io/image2cpp/)
  - [cabi](https://github.com/MLXXXp/Arduboy2/tree/master/extras/cabi)
+
+
+## Legal
+
+Please read the associated LICENSE document for this software.
+
+Arduboy® is a registered trademark of [Arduboy, Inc., USA](https://www.arduboy.com).
