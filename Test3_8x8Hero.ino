@@ -30,7 +30,7 @@ void test8x8Hero(bool byteAligned) {
     }
 
     // --- Sprites::drawOverwrite ---
-    benchAverage = 0.0;
+    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
         benchStartTime = millis();
@@ -74,7 +74,7 @@ void test8x8Hero(bool byteAligned) {
 
 
     // --- Sprites::drawErase ---
-    benchAverage = 0.0;
+    benchAverage = (float)0;
     arduboy.fillScreen(WHITE); // Subtract the inverted sprite from 'white' screen
     arduboy.invert(true); // Invert the display for visual consistency
     arduboy.display();
@@ -95,14 +95,14 @@ void test8x8Hero(bool byteAligned) {
     arduboy.fillScreen(BLACK); // Back to black to avoid white flash
     arduboy.invert(false); // Restore display
     arduboy.display();
-    benchAverage /= 3.0;
+    benchAverage /= (float)3;
     logConsole(text::spritesErase);              // "Sprites Erase       : "
     Serial.print(benchAverage,3);               // Result (3 d.p.)
     logConsole(text::micros, newLine);          // " µs\n"
     
     
     // --- Sprites::drawSelfMasked ---
-    benchAverage = 0.0;
+    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
         benchStartTime = millis();
@@ -116,14 +116,14 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
         benchAverage = benchAverage + benchResult;
     }
-    benchAverage /= 3.0;
+    benchAverage /= (float)3;
     logConsole(text::spritesSelfMask);           // "Sprites Self masked : "
     Serial.print(benchAverage,3);               // Result (3 d.p.)
     logConsole(text::micros);                   // " µs\n"
     
     
     // --- arduboy.drawBitmap ~ Sprites::drawSelfMasked ---
-    benchAverage = 0.0;
+    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
         benchStartTime = millis();
@@ -137,14 +137,14 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
         benchAverage = benchAverage + benchResult; // Update the running average
     }
-    benchAverage /= 3.0;
+    benchAverage /= (float)3;
     logConsole(text::bitmapsStd);               // "Bitmaps Standard    : "
     Serial.print(benchAverage,3);               // Result (3 d.p.)
     logConsole(text::micros);                   // " µs\n"
     
     
     // --- arduboy.drawSlowXYBitmap ~  Sprites::drawSelfMasked ---
-    benchAverage = 0.0;
+    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
         benchStartTime = millis();
@@ -158,14 +158,14 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
         benchAverage = benchAverage + benchResult; // Update the running average
     }
-    benchAverage /= 3.0;
+    benchAverage /= (float)3;
     logConsole(text::bitmapsSlow);              // "Bitmaps Slow XY     : "
     Serial.print(benchAverage,3);               // Result (3 d.p.)
     logConsole(text::micros);                   // " µs\n"
     
     
     // --- arduboy.drawCompressed ~  Sprites::drawSelfMasked ---
-    benchAverage = 0.0;
+    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
         benchStartTime = millis();
@@ -179,7 +179,7 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
         benchAverage = benchAverage + benchResult; // Update the running average
     }
-    benchAverage /= 3.0;
+    benchAverage /= (float)3;
     logConsole(text::bitmapsComp);              // "Bitmaps Compressed  : "
     Serial.print(benchAverage,3);               // Result (3 d.p.)
     logConsole(text::micros, newLine);          // " µs\n"
@@ -188,7 +188,7 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- Sprites::drawExternalMask ---
-    benchAverage = 0.0;
+    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
         benchStartTime = millis();
@@ -202,14 +202,14 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
         benchAverage = benchAverage + benchResult;
     }
-    benchAverage /= 3.0;
+    benchAverage /= (float)3;
     logConsole(text::spritesExtMask);            // "Sprites Ext' mask   : "
     Serial.print(benchAverage,3);               // Result (3 d.p.)
     logConsole(text::micros);                   // " µs\n"
     
     
     // --- Sprites::drawPlusMask ---
-    benchAverage = 0.0;
+    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
         benchStartTime = millis();
@@ -223,14 +223,14 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
         benchAverage = benchAverage + benchResult; // Update the running average
     }
-    benchAverage /= 3.0;
+    benchAverage /= (float)3;
     logConsole(text::spritesPlusMask);           // "Sprites Plus mask   : "
     Serial.print(benchAverage,3);               // Result (3 d.p.)
     logConsole(text::micros);                       // " µs\n"
     
     
     // --- Sprites::drawSelfMasked with extra masking step ---
-    benchAverage = 0.0;
+    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
         benchStartTime = millis();
@@ -245,14 +245,14 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
         benchAverage = benchAverage + benchResult; // Update the running average
     }
-    benchAverage /= 3.0;
+    benchAverage /= (float)3;
     logConsole(text::spritesEraseMasked);        // "Sprites Self w/mask : "
     Serial.print(benchAverage,3);               // Result (3 d.p.)
     logConsole(text::micros);                   // " µs\n"
     
     
     // --- arduboy.drawBitmap with extra masking step ---
-    benchAverage = 0.0;
+    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
         benchStartTime = millis();
@@ -267,14 +267,14 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
         benchAverage = benchAverage + benchResult; // Update the running average
     }
-    benchAverage /= 3.0;
+    benchAverage /= (float)3;
     logConsole(text::bitmapsStdMasked);         // "Bitmaps Std w/mask  : "
     Serial.print(benchAverage,3);               // Result (3 d.p.)
     logConsole(text::micros);                   // " µs\n"
     
     
     // --- arduboy.drawSlowXYBitmap with extra masking step ---
-    benchAverage = 0.0;
+    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
         benchStartTime = millis();
@@ -289,14 +289,14 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
         benchAverage = benchAverage + benchResult; // Update the running average
     }
-    benchAverage /= 3.0;
+    benchAverage /= (float)3;
     logConsole(text::bitmapsSlowMasked);        // "Bitmaps Slow w/mask : "
     Serial.print(benchAverage,3);               // Result (3 d.p.)
     logConsole(text::micros);                   // " µs\n"
     
     
     // --- arduboy.drawCompressed with extra masking step ---
-    benchAverage = 0.0;
+    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
         benchStartTime = millis();
@@ -311,7 +311,7 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
         benchAverage = benchAverage + benchResult; // Update the running average
     }
-    benchAverage /= 3.0;
+    benchAverage /= (float)3;
     logConsole(text::bitmapsCompMasked);        // "Bitmaps Comp w/mask : "
     Serial.print(benchAverage,3);               // Result (3 d.p.)
     logConsole(text::micros);                   // " µs\n"
