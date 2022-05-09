@@ -1,4 +1,4 @@
-# 🏁 - Blit Racer - 🏁
+# 🏁 ~ Blit Racer ~ 🏁
 
 Race different blitting functions on the Arduboy®!  
 _Vrooom!!_ The sound of bytes tearing across SPI towards the final buffer.  
@@ -61,6 +61,7 @@ A range of conditions (dimensions, frames of animation, byte alignment on render
 4. 
 5. 
 6. 
+7. 
 
 ## TODO
 
@@ -68,10 +69,12 @@ Essentials (Race Stages):
 
 - [x] *1* ~ 1x1 pixel
 - [ ] *2* ~ Font
-- [x] *3* ~ 8x8 Hero (with animation)
+- [x] *3* ~ 8x8 Hero (with short animation)
 - [ ] *4* ~ Chunky sprite (not modulo 8)
 - [ ] *5* ~ Banner
 - [ ] *6* ~ Full screen
+- [ ] *7* ~ Animation (many frames)
+
 
 
 Extras:

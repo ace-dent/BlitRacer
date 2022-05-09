@@ -1,7 +1,7 @@
 #pragma once
 
 #include <avr/pgmspace.h> // For PROGMEM
-
+#include "Utils.h"
 
 constexpr bool newLine = true;
 
@@ -9,7 +9,7 @@ constexpr bool newLine = true;
 // Print a string from program memory to the Arduboy screen
 void logArduboy(const char* str, bool carriageReturn = false) {
     arduboy.setCursor(2,8);
-    arduboy.print((__FlashStringHelper*)(str));
+    arduboy.print(reinterpret_cast<const __FlashStringHelper*>(str));
     if (carriageReturn) arduboy.print(F("\n"));
     arduboy.display();
     delay(1000);
@@ -17,7 +17,7 @@ void logArduboy(const char* str, bool carriageReturn = false) {
 
 // Print a string from program memory to the serial console
 void logConsole(const char* str, bool carriageReturn = false) {
-    Serial.print((__FlashStringHelper*)(str));
+    Serial.print(reinterpret_cast<const __FlashStringHelper*>(str));
     if (carriageReturn) Serial.print(F("\n"));
     delay(50);
 }
