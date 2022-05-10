@@ -22,9 +22,9 @@ void testMonopixel() {
 
 
     // --- Sprites::drawOverwrite ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
+    benchAverage = 0.0F;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
@@ -41,9 +41,9 @@ void testMonopixel() {
     logConsoleAveragedResult(text::spritesOverwrite, (4*3)); // 4 blitter op's x 3 loops
 
     // --- SpritesB::drawOverwrite ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
+    benchAverage = 0.0F;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
@@ -65,12 +65,12 @@ void testMonopixel() {
 
 
     // --- Sprites::drawErase ---
-    benchAverage = (float)0;
     arduboy.fillScreen(WHITE); // Subtract the inverted sprite from 'white' screen
     arduboy.invert(true); // Invert the display for visual consistency
     arduboy.display();
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
+    benchAverage = 0.0F;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
@@ -94,9 +94,9 @@ void testMonopixel() {
     
     
     // --- Sprites::drawSelfMasked ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
+    benchAverage = 0.0F;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
@@ -115,9 +115,9 @@ void testMonopixel() {
     
     
     // --- arduboy.drawBitmap ~ Sprites::drawSelfMasked ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
+    benchAverage = 0.0F;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
@@ -136,9 +136,9 @@ void testMonopixel() {
     
     
     // --- arduboy.drawSlowXYBitmap ~  Sprites::drawSelfMasked ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
+    benchAverage = 0.0F;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
@@ -157,9 +157,9 @@ void testMonopixel() {
     
     
     // --- arduboy.drawCompressed ~  Sprites::drawSelfMasked ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
+    benchAverage = 0.0F;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
@@ -180,9 +180,9 @@ void testMonopixel() {
     
     
     // --- Sprites::drawExternalMask ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
+    benchAverage = 0.0F;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
@@ -201,9 +201,9 @@ void testMonopixel() {
     
     
     // --- Sprites::drawPlusMask ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
+    benchAverage = 0.0F;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
@@ -222,9 +222,9 @@ void testMonopixel() {
     
     
     // --- Sprites::drawSelfMasked with extra masking step ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
+    benchAverage = 0.0F;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
@@ -247,9 +247,9 @@ void testMonopixel() {
     
     
     // --- arduboy.drawBitmap with extra masking step ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
+    benchAverage = 0.0F;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
@@ -272,9 +272,9 @@ void testMonopixel() {
     
     
     // --- arduboy.drawSlowXYBitmap with extra masking step ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
+    benchAverage = 0.0F;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {
@@ -297,9 +297,9 @@ void testMonopixel() {
     
     
     // --- arduboy.drawCompressed with extra masking step ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
         loopCount = 0;
+    benchAverage = 0.0F;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
             for (x = xStart; x < WIDTH; x = x + xStep) {

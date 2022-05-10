@@ -47,11 +47,11 @@ void testBaseline(void) {
     }
     benchEndTime = millis();
 
-    benchResult = ( (float)benchEndTime - (float)benchStartTime ) / ((float)100 * (float)10000); // Calculate benchmark time for an individual loop
-    benchResult = benchResult * (float)1000; // Convert milli (10^-3) to micro (10^-6) seconds
-    benchOverhead = benchResult - ((float)20 * ((float)1000000/(float)F_CPU)); // Calculate overhead of nested FOR loops by subtracting 20x instruction cycles in microseconds
+    benchResult = ( (float)benchEndTime - (float)benchStartTime ) / (100.0F * 10000.0F); // Calculate benchmark time for an individual loop
+    benchResult *= 1000.0F; // Convert milli (10^-3) to micro (10^-6) seconds
+    benchOverhead = benchResult - (20.0F * (1000000.0F/(float)F_CPU)); // Calculate overhead of nested FOR loops by subtracting 20x instruction cycles in microseconds
     benchResult = benchResult - benchOverhead; // Remove overhead from results
-    benchResult = benchResult / (float)20; // Determine the result for an individual instruction
+    benchResult = benchResult / 20.0F; // Determine the result for an individual instruction
 
     logConsole(text::nop);                  // "nop                 : "
     Serial.print(benchResult,4);            // ~0.0625 (625ns expected)

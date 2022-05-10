@@ -30,8 +30,8 @@ void test8x8Hero(bool byteAligned) {
     }
 
     // --- Sprites::drawOverwrite ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
+    benchAverage = 0.0F;
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
@@ -48,8 +48,8 @@ void test8x8Hero(bool byteAligned) {
 
 
     // --- SpritesB::drawOverwrite ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
+    benchAverage = 0.0F;
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
@@ -68,11 +68,11 @@ void test8x8Hero(bool byteAligned) {
 
 
     // --- Sprites::drawErase ---
-    benchAverage = (float)0;
     arduboy.fillScreen(WHITE); // Subtract the inverted sprite from 'white' screen
     arduboy.invert(true); // Invert the display for visual consistency
     arduboy.display();
     for (i = 0; i < 3; i = i + 1) {
+    benchAverage = 0.0F;
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
@@ -91,8 +91,8 @@ void test8x8Hero(bool byteAligned) {
     arduboy.display();
     logConsoleAveragedResult(text::spritesErase, 3);
     // --- Sprites::drawSelfMasked ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
+    benchAverage = 0.0F;
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
@@ -109,8 +109,8 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- arduboy.drawBitmap ~ Sprites::drawSelfMasked ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
+    benchAverage = 0.0F;
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
@@ -127,8 +127,8 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- arduboy.drawSlowXYBitmap ~  Sprites::drawSelfMasked ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
+    benchAverage = 0.0F;
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
@@ -145,8 +145,8 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- arduboy.drawCompressed ~  Sprites::drawSelfMasked ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
+    benchAverage = 0.0F;
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
@@ -165,8 +165,8 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- Sprites::drawExternalMask ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
+    benchAverage = 0.0F;
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
@@ -183,8 +183,8 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- Sprites::drawPlusMask ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
+    benchAverage = 0.0F;
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
@@ -201,8 +201,8 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- Sprites::drawSelfMasked with extra masking step ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
+    benchAverage = 0.0F;
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
@@ -220,8 +220,8 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- arduboy.drawBitmap with extra masking step ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
+    benchAverage = 0.0F;
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
@@ -239,8 +239,8 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- arduboy.drawSlowXYBitmap with extra masking step ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
+    benchAverage = 0.0F;
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
@@ -258,8 +258,8 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- arduboy.drawCompressed with extra masking step ---
-    benchAverage = (float)0;
     for (i = 0; i < 3; i = i + 1) {
+    benchAverage = 0.0F;
         loopCount = 0;
         benchStartTime = millis();
         for (y = yStart; y < HEIGHT; y = y + yStep) {
