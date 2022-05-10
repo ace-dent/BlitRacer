@@ -15,12 +15,11 @@ void testBaseline(void) {
     logConsole(text::micros);                   // " µs\n"
 
     benchStartTime = millis();
-
     // Determine an indicative* overhead for 2x nested FOR loops
     // 100 x 10,000 (1M) loops are ~minimum for precision
     // * The rendering benchmarks have far less loops but we assume no affect on the overhead
-    for (uint16_t a = 0; a < 100; a++) {
-        for (uint16_t b = 0; b < 10000; b++) {
+    for (int16_t a = 0; a < 100; a++) {
+        for (int16_t b = 0; b < 10000; b++) {
             // Uses NOP as a standard for 1 cycle
             // 20x instructions ~minimum for precision
             asm volatile ("nop");
@@ -57,23 +56,8 @@ void testBaseline(void) {
     Serial.print(benchResult,4);            // ~0.0625 (625ns expected)
     logConsole(text::micros);               // " µs\n"
 
-
-    // Determine the overhead for incrementing a loop counter
-    uint32_t loopCount = 0;
-    for (uint16_t a = 0; a < 100; a++) {
-        for (uint16_t b = 0; b < 10000; b++) {
-            loopCount += 1;
-        }
-    }
-    benchEndTime = millis();
-
-    benchResult = ( (float)benchEndTime - (float)benchStartTime ) / ((float)100 * (float)10000); // Calculate benchmark time for an individual loop
-    benchResult = benchResult * (float)1000; // Convert milli (10^-3) to micro (10^-6) seconds
-    benchResult = benchResult - benchOverhead; // Remove loop overhead from results
-    benchOverhead += benchResult; // Include the time for incrementing the loop counter       
-
     logConsole(text::loopOverhead);         // "Loop overhead       : "
-    Serial.print(benchOverhead,4);          // ~1.6 (expected)
+    Serial.print(benchOverhead,4);          // ~0.2670 (expected)
     logConsole(text::micros);               // " µs\n"
 
     logConsole(text::horizontalRule);       // "---------------------\n\n"

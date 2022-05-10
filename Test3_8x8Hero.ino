@@ -4,10 +4,6 @@
 
 void test8x8Hero(bool byteAligned) {
 
-    uint8_t  i, xStep, yStep;       // Indices to control rendering loops
-    int16_t  x, y, xStart, yStart;  // Image position for rendering loops
-    uint32_t loopCount = 0;         // Keep large integer, as used for CPU baseline
-
     arduboy.clear();
     logArduboy(text::heroTest);
     logConsole(text::heroTest);                 // "* 8x8 'Hero' test   *\n"
@@ -19,25 +15,32 @@ void test8x8Hero(bool byteAligned) {
     logConsole(text::titleBreak);               // "*********************\n\n"
     arduboy.clear();
 
-    xStart = -8;
-    yStart = -8;
-    if (byteAligned) {
-        xStep = 8;
-        yStep = 8;
-    } else {
-        xStep = 7;
-        yStep = 7;  
+
+    // Parameters for rendering loops
+    constexpr int16_t xStart = -heroWidth;
+    constexpr int16_t yStart = -heroHeight;
+    constexpr int16_t xEnd = WIDTH + heroWidth;
+    constexpr int16_t yEnd = HEIGHT + heroHeight;
+    uint8_t xStep = heroWidth;
+    uint8_t yStep = heroHeight;
+    if (!byteAligned) {
+        xStep -= 1;
+        yStep -= 1;  
     }
 
+    // Determine the total count for the inner x,y loops
+    // This does not change between tests of different functions within a set
+    const uint16_t loopCount = divideAndRoundUp((xEnd-xStart), xStep) * divideAndRoundUp((yEnd-yStart), yStep);
+
+
+
     // --- Sprites::drawOverwrite ---
-    for (i = 0; i < 3; i = i + 1) {
     benchAverage = 0.0F; // Reset running average
-        loopCount = 0;
+    for (uint8_t i = 0; i < 3; i = i + 1) {
         benchStartTime = millis();
-        for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = xStart; x < WIDTH; x = x + xStep) {
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
                 Sprites::drawOverwrite(x, y, images8x8::sprites::std, i);
-                loopCount += 1;
             }
         }
         benchEndTime = millis();
@@ -47,20 +50,19 @@ void test8x8Hero(bool byteAligned) {
 
 
     // --- SpritesB::drawOverwrite ---
-    for (i = 0; i < 3; i = i + 1) {
     benchAverage = 0.0F; // Reset running average
-        loopCount = 0;
+    for (uint8_t i = 0; i < 3; i = i + 1) {
         benchStartTime = millis();
-        for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = xStart; x < WIDTH; x = x + xStep) {
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
                 SpritesB::drawOverwrite(x, y, images8x8::sprites::std, i);
-                loopCount += 1;
             }
         }
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesBOverwrite, 3, newLine);
+
 
     /* --- */
 
@@ -69,14 +71,12 @@ void test8x8Hero(bool byteAligned) {
 
 
     // --- Sprites::drawErase ---
-    for (i = 0; i < 3; i = i + 1) {
     benchAverage = 0.0F; // Reset running average
-        loopCount = 0;
+    for (uint8_t i = 0; i < 3; i = i + 1) {
         benchStartTime = millis();
-        for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = xStart; x < WIDTH; x = x + xStep) {
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
                 Sprites::drawErase(x, y, images8x8::sprites::std, i);
-                loopCount += 1;
             }
         }
         benchEndTime = millis();
@@ -91,14 +91,12 @@ void test8x8Hero(bool byteAligned) {
 
 
     // --- Sprites::drawSelfMasked ---
-    for (i = 0; i < 3; i = i + 1) {
     benchAverage = 0.0F; // Reset running average
-        loopCount = 0;
+    for (uint8_t i = 0; i < 3; i = i + 1) {
         benchStartTime = millis();
-        for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = xStart; x < WIDTH; x = x + xStep) {
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
                 Sprites::drawSelfMasked(x, y, images8x8::sprites::std, i);
-                loopCount += 1;
             }
         }
         benchEndTime = millis();
@@ -108,14 +106,12 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- arduboy.drawBitmap ~ Sprites::drawSelfMasked ---
-    for (i = 0; i < 3; i = i + 1) {
     benchAverage = 0.0F; // Reset running average
-        loopCount = 0;
+    for (uint8_t i = 0; i < 3; i = i + 1) {
         benchStartTime = millis();
-        for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = xStart; x < WIDTH; x = x + xStep) {
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
                 arduboy.drawBitmap(x, y, images8x8::bitmaps::std[i], heroWidth, heroHeight, WHITE);
-                loopCount += 1;
             }
         }
         benchEndTime = millis();
@@ -126,14 +122,12 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- arduboy.drawSlowXYBitmap ~  Sprites::drawSelfMasked ---
-    for (i = 0; i < 3; i = i + 1) {
     benchAverage = 0.0F; // Reset running average
-        loopCount = 0;
+    for (uint8_t i = 0; i < 3; i = i + 1) {
         benchStartTime = millis();
-        for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = xStart; x < WIDTH; x = x + xStep) {
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
                 arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slow[i], heroWidth, heroHeight, WHITE);
-                loopCount += 1;
             }
         }
         benchEndTime = millis();
@@ -144,14 +138,12 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- arduboy.drawCompressed ~  Sprites::drawSelfMasked ---
-    for (i = 0; i < 3; i = i + 1) {
     benchAverage = 0.0F; // Reset running average
-        loopCount = 0;
+    for (uint8_t i = 0; i < 3; i = i + 1) {
         benchStartTime = millis();
-        for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = xStart; x < WIDTH; x = x + xStep) {
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
                 arduboy.drawCompressed(x, y, images8x8::bitmaps::cabi[i], WHITE);
-                loopCount += 1;
             }
         }
         benchEndTime = millis();
@@ -164,14 +156,12 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- Sprites::drawExternalMask ---
-    for (i = 0; i < 3; i = i + 1) {
     benchAverage = 0.0F; // Reset running average
-        loopCount = 0;
+    for (uint8_t i = 0; i < 3; i = i + 1) {
         benchStartTime = millis();
-        for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = xStart; x < WIDTH; x = x + xStep) {
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
                 Sprites::drawExternalMask(x, y, images8x8::sprites::std, images8x8::sprites::mask, i, i);
-                loopCount += 1;
             }
         }
         benchEndTime = millis();
@@ -181,14 +171,12 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- Sprites::drawPlusMask ---
-    for (i = 0; i < 3; i = i + 1) {
     benchAverage = 0.0F; // Reset running average
-        loopCount = 0;
+    for (uint8_t i = 0; i < 3; i = i + 1) {
         benchStartTime = millis();
-        for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = xStart; x < WIDTH; x = x + xStep) {
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
                 Sprites::drawPlusMask(x, y, images8x8::sprites::plusMask, i);
-                loopCount += 1;
             }
         }
         benchEndTime = millis();
@@ -199,15 +187,13 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- Sprites::drawSelfMasked with extra masking step ---
-    for (i = 0; i < 3; i = i + 1) {
     benchAverage = 0.0F; // Reset running average
-        loopCount = 0;
+    for (uint8_t i = 0; i < 3; i = i + 1) {
         benchStartTime = millis();
-        for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = xStart; x < WIDTH; x = x + xStep) {
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
                 Sprites::drawErase(x, y, images8x8::sprites::mask, i);
                 Sprites::drawSelfMasked(x, y, images8x8::sprites::std, i);
-                loopCount += 1;
             }
         }
         benchEndTime = millis();
@@ -218,15 +204,13 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- arduboy.drawBitmap with extra masking step ---
-    for (i = 0; i < 3; i = i + 1) {
     benchAverage = 0.0F; // Reset running average
-        loopCount = 0;
+    for (uint8_t i = 0; i < 3; i = i + 1) {
         benchStartTime = millis();
-        for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = xStart; x < WIDTH; x = x + xStep) {
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
                 arduboy.drawBitmap(x, y, images8x8::bitmaps::stdMask[i], heroWidth, heroHeight, BLACK);
                 arduboy.drawBitmap(x, y, images8x8::bitmaps::std[i], heroWidth, heroHeight, WHITE);
-                loopCount += 1;
             }
         }
         benchEndTime = millis();
@@ -237,15 +221,13 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- arduboy.drawSlowXYBitmap with extra masking step ---
-    for (i = 0; i < 3; i = i + 1) {
     benchAverage = 0.0F; // Reset running average
-        loopCount = 0;
+    for (uint8_t i = 0; i < 3; i = i + 1) {
         benchStartTime = millis();
-        for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = xStart; x < WIDTH; x = x + xStep) {
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
                 arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slowMask[i], heroWidth, heroHeight, BLACK);
                 arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slow[i], heroWidth, heroHeight, WHITE);
-                loopCount += 1;
             }
         }
         benchEndTime = millis();
@@ -256,15 +238,13 @@ void test8x8Hero(bool byteAligned) {
     
     
     // --- arduboy.drawCompressed with extra masking step ---
-    for (i = 0; i < 3; i = i + 1) {
     benchAverage = 0.0F; // Reset running average
-        loopCount = 0;
+    for (uint8_t i = 0; i < 3; i = i + 1) {
         benchStartTime = millis();
-        for (y = yStart; y < HEIGHT; y = y + yStep) {
-            for (x = xStart; x < WIDTH; x = x + xStep) {
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
                 arduboy.drawCompressed(x, y, images8x8::bitmaps::cabiMask[i], BLACK);
                 arduboy.drawCompressed(x, y, images8x8::bitmaps::cabi[i], WHITE);
-                loopCount += 1;
             }
         }
         benchEndTime = millis();

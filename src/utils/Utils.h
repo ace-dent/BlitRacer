@@ -30,3 +30,14 @@ void invertScreen (bool invert = false) {
     arduboy.invert(invert);
     arduboy.display();
 }
+
+
+// Maths utilities
+
+int16_t divideAndRoundUp(int16_t numerator, int16_t denominator) {
+    int16_t val = numerator / denominator;
+    if(numerator % denominator) { // For any remainder, plus one
+        val += 1;
+    }
+    return val;
+}
