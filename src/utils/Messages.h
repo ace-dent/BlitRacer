@@ -6,24 +6,6 @@
 constexpr bool newLine = true;
 
 
-// Print a string from program memory to the Arduboy screen
-void logArduboy(const char* str, bool carriageReturn = false) {
-    arduboy.setCursor(2,8);
-    arduboy.print(reinterpret_cast<const __FlashStringHelper*>(str));
-    if (carriageReturn) arduboy.print(F("\n"));
-    arduboy.display();
-    delay(1000);
-}
-
-// Print a string from program memory to the serial console
-void logConsole(const char* str, bool carriageReturn = false) {
-    Serial.print(reinterpret_cast<const __FlashStringHelper*>(str));
-    if (carriageReturn) Serial.print(F("\n"));
-    delay(50);
-}
-
-
-
 namespace text {
 
     constexpr char PROGMEM setup[]              = "Setup complete...\n";
@@ -69,4 +51,31 @@ namespace text {
     constexpr char PROGMEM bitmapsSlowMasked[]  = "Bitmaps Slow w/mask : ";
     constexpr char PROGMEM bitmapsCompMasked[]  = "Bitmaps Comp w/mask : ";
 
+}
+
+
+// Print a string from program memory to the Arduboy screen
+void logArduboy(const char* str, bool lineFeed = false) {
+    arduboy.setCursor(2,8);
+    arduboy.print(reinterpret_cast<const __FlashStringHelper*>(str));
+    if (lineFeed) arduboy.print(F("\n"));
+    arduboy.display();
+    delay(1000);
+}
+
+
+// Print a string from program memory to the serial console
+void logConsole(const char* str, bool lineFeed = false) {
+    Serial.print(reinterpret_cast<const __FlashStringHelper*>(str));
+    if (lineFeed) Serial.print(F("\n"));
+    delay(50);
+}
+
+// Determine and print the average test result to the serial console
+void logConsoleAveragedResult(const char* str, uint8_t sampleCount, bool lineFeed = false) {
+    benchAverage /= (float)sampleCount;
+    logConsole(str);                            // Function tested
+    Serial.print(benchAverage,3);               // Result (3 d.p.)
+    logConsole(text::micros);                   // " µs\n"
+    if (lineFeed) logConsole(text::blank, newLine);
 }
