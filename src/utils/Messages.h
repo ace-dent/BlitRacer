@@ -51,6 +51,15 @@ namespace text {
     constexpr char PROGMEM bitmapsSlowMasked[]  = "Bitmaps Slow w/mask : ";
     constexpr char PROGMEM bitmapsCompMasked[]  = "Bitmaps Comp w/mask : ";
 
+#ifdef FX_BUILD
+    constexpr char PROGMEM fxDbmOverwrite[]     = "FX dbm Overwrite    : ";
+    constexpr char PROGMEM fxDbmReverse[]       = "FX dbm Reverse      : ";
+    constexpr char PROGMEM fxDbmBlack[]         = "FX dbm Black        : ";
+    constexpr char PROGMEM fxDbmWhite[]         = "FX dbm White        : ";
+    constexpr char PROGMEM fxDbmMasked[]        = "FX dbm Masked       : ";
+    constexpr char PROGMEM fxDbmWhiteMasked[]   = "FX dbm White w/mask : ";
+//  constexpr char PROGMEM fxDbmInvert[]        = "FX dbm Invert       : ";
+#endif
 }
 
 
