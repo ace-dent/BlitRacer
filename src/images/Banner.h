@@ -1,5 +1,9 @@
 #pragma once
 
+#include <stdint.h> // For uint8_t
+#include <avr/pgmspace.h> // For PROGMEM
+
+
 /*
  *  Medium sized banner image. 
  *  Image is 18px high, so is padded to 24px (3x8px) in height.

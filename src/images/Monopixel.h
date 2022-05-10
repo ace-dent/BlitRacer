@@ -1,12 +1,13 @@
 #pragma once
 
+#include <stdint.h> // For uint8_t
+#include <avr/pgmspace.h> // For PROGMEM
+
+
 /*
  *  Smallest 1x1px image – the mighty, mini, mono pixel!
  *
  */
-
-#include <stdint.h> // For uint8_t
-#include <avr/pgmspace.h> // For PROGMEM
 
 
 constexpr uint8_t monopixWidth = 1;

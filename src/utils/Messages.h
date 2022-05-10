@@ -1,7 +1,9 @@
 #pragma once
 
+#include <stdint.h>
 #include <avr/pgmspace.h> // For PROGMEM
 #include "Utils.h"
+
 
 constexpr bool newLine = true;
 
@@ -29,7 +31,8 @@ namespace text {
     constexpr char PROGMEM micros[]             = " µs\n";
     constexpr char PROGMEM byteAlign[]          = "   - Byte aligned\n";
     constexpr char PROGMEM byteUnalign[]        = "   - Byte unaligned\n";
-    
+
+    // Sprites functions
     constexpr char PROGMEM spritesOverwrite[]   = "Sprites Overwrite   : ";
     constexpr char PROGMEM spritesErase[]       = "Sprites Erase       : ";
     constexpr char PROGMEM spritesSelfMask[]    = "Sprites Self masked : ";
@@ -37,13 +40,7 @@ namespace text {
     constexpr char PROGMEM spritesExtMask[]     = "Sprites Ext' mask   : ";
     constexpr char PROGMEM spritesPlusMask[]    = "Sprites Plus mask   : ";
 
-    constexpr char PROGMEM spritesBOverwrite[]  = "SpritesB Overwrite  : ";
-    constexpr char PROGMEM spritesBErase[]      = "SpritesB Erase      : ";
-    constexpr char PROGMEM spritesBSelfMask[]   = "SpritesB Self masked: ";
-    constexpr char PROGMEM spritesBEraseMasked[]= "SpritesB Self w/mask: ";
-    constexpr char PROGMEM spritesBExtMask[]    = "SpritesB Ext' mask  : ";
-    constexpr char PROGMEM spritesBPlusMask[]   = "SpritesB Plus mask  : ";
-
+    // Arduboy bitmap functions
     constexpr char PROGMEM bitmapsStd[]         = "Bitmaps Standard    : ";
     constexpr char PROGMEM bitmapsSlow[]        = "Bitmaps Slow XY     : ";
     constexpr char PROGMEM bitmapsComp[]        = "Bitmaps Compressed  : ";
@@ -51,7 +48,18 @@ namespace text {
     constexpr char PROGMEM bitmapsSlowMasked[]  = "Bitmaps Slow w/mask : ";
     constexpr char PROGMEM bitmapsCompMasked[]  = "Bitmaps Comp w/mask : ";
 
-#ifdef FX_BUILD
+#ifdef TEST_SPRITES_B
+    // SpritesB functions
+    constexpr char PROGMEM spritesBOverwrite[]  = "SpritesB Overwrite  : ";
+    constexpr char PROGMEM spritesBErase[]      = "SpritesB Erase      : ";
+    constexpr char PROGMEM spritesBSelfMask[]   = "SpritesB Self masked: ";
+    constexpr char PROGMEM spritesBEraseMasked[]= "SpritesB Self w/mask: ";
+    constexpr char PROGMEM spritesBExtMask[]    = "SpritesB Ext' mask  : ";
+    constexpr char PROGMEM spritesBPlusMask[]   = "SpritesB Plus mask  : ";
+#endif
+
+#ifdef TEST_FXDBM
+    // FX draw bitmap functions
     constexpr char PROGMEM fxDbmOverwrite[]     = "FX dbm Overwrite    : ";
     constexpr char PROGMEM fxDbmReverse[]       = "FX dbm Reverse      : ";
     constexpr char PROGMEM fxDbmBlack[]         = "FX dbm Black        : ";

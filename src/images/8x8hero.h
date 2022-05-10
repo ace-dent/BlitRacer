@@ -1,13 +1,14 @@
 #pragma once
 
+#include <stdint.h> // For uint8_t
+#include <avr/pgmspace.h> // For PROGMEM
+
+
 /*
  *  Typical 8x8px images used for a character sprite.
  *  3 frames of animation.
  *
  */
-
-#include <stdint.h> // For uint8_t
-#include <avr/pgmspace.h> // For PROGMEM
 
 
 constexpr uint8_t heroWidth = 8;

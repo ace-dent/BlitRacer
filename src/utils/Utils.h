@@ -1,5 +1,8 @@
 #pragma once
 
+#include <stdint.h>
+
+
 // Global benchmarking variables
 uint32_t benchStartTime, benchEndTime; // Unsigned long for millis()
 float    benchResult, benchAverage, benchOverhead;
