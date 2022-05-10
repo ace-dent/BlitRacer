@@ -36,7 +36,7 @@ void invertScreen (bool invert = false) {
 
 int16_t divideAndRoundUp(int16_t numerator, int16_t denominator) {
     int16_t val = numerator / denominator;
-    if(numerator % denominator) { // For any remainder, plus one
+    if((numerator % denominator) != 0) { // For any remainder, plus one
         val += 1;
     }
     return val;
