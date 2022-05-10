@@ -67,10 +67,10 @@ void test8x8Hero(bool byteAligned) {
     /* --- */
 
 
+    invertScreen(true); 
+
+
     // --- Sprites::drawErase ---
-    arduboy.fillScreen(WHITE); // Subtract the inverted sprite from 'white' screen
-    arduboy.invert(true); // Invert the display for visual consistency
-    arduboy.display();
     for (i = 0; i < 3; i = i + 1) {
     benchAverage = 0.0F;
         loopCount = 0;
@@ -84,12 +84,15 @@ void test8x8Hero(bool byteAligned) {
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
         benchAverage = benchAverage + benchResult;
-        arduboy.fillScreen(WHITE); // Prepare 'white' screen for next loop
+        arduboy.fillScreen(WHITE); // Clear to 'white' for next render
     }
-    arduboy.fillScreen(BLACK); // Back to black to avoid white flash
-    arduboy.invert(false); // Restore display
-    arduboy.display();
     logConsoleAveragedResult(text::spritesErase, 3);
+
+
+    invertScreen(false);
+
+
+
     // --- Sprites::drawSelfMasked ---
     for (i = 0; i < 3; i = i + 1) {
     benchAverage = 0.0F;
