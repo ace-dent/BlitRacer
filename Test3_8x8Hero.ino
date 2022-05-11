@@ -49,6 +49,7 @@ void test8x8Hero(bool byteAligned) {
     logConsoleAveragedResult(text::spritesOverwrite, 3);
 
 
+#ifdef TEST_SPRITES_B
     // --- SpritesB::drawOverwrite ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < 3; i = i + 1) {
@@ -62,7 +63,7 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesBOverwrite, 3, newLine);
-
+#endif
 
     /* --- */
 
@@ -86,8 +87,25 @@ void test8x8Hero(bool byteAligned) {
     logConsoleAveragedResult(text::spritesErase, 3);
 
 
-    invertScreen(false);
+#ifdef TEST_SPRITES_B
+    // --- SpritesB::drawErase ---
+    benchAverage = 0.0F; // Reset running average
+    for (uint8_t i = 0; i < 3; i = i + 1) {
+        benchStartTime = millis();
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
+                SpritesB::drawErase(x, y, images8x8::sprites::std, i);
+            }
+        }
+        benchEndTime = millis();
+        benchmark(loopCount); // Benchmark for given loops
+        arduboy.fillScreen(WHITE); // Clear to 'white' for next render
+    }
+    logConsoleAveragedResult(text::spritesBErase, 3);
+#endif
 
+
+    invertScreen(false);
 
 
     // --- Sprites::drawSelfMasked ---
@@ -103,8 +121,25 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesSelfMask, 3);
-    
-    
+
+
+#ifdef TEST_SPRITES_B
+    // --- SpritesB::drawSelfMasked ---
+    benchAverage = 0.0F; // Reset running average
+    for (uint8_t i = 0; i < 3; i = i + 1) {
+        benchStartTime = millis();
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
+                SpritesB::drawSelfMasked(x, y, images8x8::sprites::std, i);
+            }
+        }
+        benchEndTime = millis();
+        benchmark(loopCount); // Benchmark for given loops
+    }
+    logConsoleAveragedResult(text::spritesBSelfMask, 3);
+#endif
+
+
     // --- arduboy.drawBitmap ~ Sprites::drawSelfMasked ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < 3; i = i + 1) {
@@ -116,11 +151,10 @@ void test8x8Hero(bool byteAligned) {
         }
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
-        
     }
     logConsoleAveragedResult(text::bitmapsStd, 3);
-    
-    
+
+
     // --- arduboy.drawSlowXYBitmap ~  Sprites::drawSelfMasked ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < 3; i = i + 1) {
@@ -132,7 +166,6 @@ void test8x8Hero(bool byteAligned) {
         }
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
-        
     }
     logConsoleAveragedResult(text::bitmapsSlow, 3);
     
@@ -148,13 +181,13 @@ void test8x8Hero(bool byteAligned) {
         }
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
-        
     }
     logConsoleAveragedResult(text::bitmapsComp, 3, newLine);
-    
-    
-    
-    
+
+
+    /* --- */
+
+
     // --- Sprites::drawExternalMask ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < 3; i = i + 1) {
@@ -168,8 +201,23 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesExtMask, 3);
-    
-    
+
+
+    // --- SpritesB::drawExternalMask ---
+    benchAverage = 0.0F; // Reset running average
+    for (uint8_t i = 0; i < 3; i = i + 1) {
+        benchStartTime = millis();
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
+                SpritesB::drawExternalMask(x, y, images8x8::sprites::std, images8x8::sprites::mask, i, i);
+            }
+        }
+        benchEndTime = millis();
+        benchmark(loopCount); // Benchmark for given loops
+    }
+    logConsoleAveragedResult(text::spritesBExtMask, 3);
+
+
     // --- Sprites::drawPlusMask ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < 3; i = i + 1) {
@@ -181,11 +229,25 @@ void test8x8Hero(bool byteAligned) {
         }
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
-        
     }
     logConsoleAveragedResult(text::spritesPlusMask, 3);
-    
-    
+
+
+    // --- SpritesB::drawPlusMask ---
+    benchAverage = 0.0F; // Reset running average
+    for (uint8_t i = 0; i < 3; i = i + 1) {
+        benchStartTime = millis();
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
+                SpritesB::drawPlusMask(x, y, images8x8::sprites::plusMask, i);
+            }
+        }
+        benchEndTime = millis();
+        benchmark(loopCount); // Benchmark for given loops
+    }
+    logConsoleAveragedResult(text::spritesBPlusMask, 3);
+
+
     // --- Sprites::drawSelfMasked with extra masking step ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < 3; i = i + 1) {

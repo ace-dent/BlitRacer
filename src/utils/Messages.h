@@ -58,7 +58,7 @@ namespace text {
     constexpr char PROGMEM spritesBPlusMask[]   = "SpritesB Plus mask  : ";
 #endif
 
-#ifdef TEST_FXDBM
+#ifdef TEST_FX_DBM
     // FX draw bitmap functions
     constexpr char PROGMEM fxDbmOverwrite[]     = "FX dbm Overwrite    : ";
     constexpr char PROGMEM fxDbmReverse[]       = "FX dbm Reverse      : ";

@@ -1,3 +1,6 @@
+#define TEST_SPRITES_B
+// #define TEST_FX_DBM
+
 #include <Arduboy2.h>
 Arduboy2 arduboy;
 
@@ -7,7 +10,7 @@ Arduboy2 arduboy;
 
 
 void setup() {
-  
+
     Serial.begin(9600);
  
     arduboy.begin();
@@ -31,5 +34,5 @@ void blitRace() {
     testMonopixel();    // Single pixel test
     test8x8Hero(true);  // 8x8 sprite, byte aligned
     test8x8Hero(false); // 8x8 sprite, byte unaligned
-//  testBanner(true);   // Banner test
+//  testBanner();   // Banner test
 }

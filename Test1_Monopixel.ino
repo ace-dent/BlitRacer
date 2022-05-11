@@ -5,8 +5,6 @@
 
 void testMonopixel() {
 
-
-
     arduboy.clear();
     logArduboy(text::monopixTest);
     logConsole(text::monopixTest);          // "* Monopixel test    *\n"
@@ -45,6 +43,8 @@ void testMonopixel() {
     }
     logConsoleAveragedResult(text::spritesOverwrite, (4*3)); // 4 blitter op's x 3 loops
 
+
+#ifdef TEST_SPRITES_B
     // --- SpritesB::drawOverwrite ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < 3; i = i + 1) {
@@ -61,13 +61,13 @@ void testMonopixel() {
         benchmark(loopCount); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesBOverwrite, (4*3), newLine); // 4 blitter op's x 3 loops
+#endif
 
 
     /* --- */
 
-    
+
     invertScreen(true); 
-    
 
 
     // --- Sprites::drawErase ---
@@ -87,12 +87,32 @@ void testMonopixel() {
         arduboy.fillScreen(WHITE); // Prepare 'white' screen for next loop
     }
     logConsoleAveragedResult(text::spritesErase, (4*3)); // 4 blitter op's x 3 loops
-    
-    
-    invertScreen(false); 
-    
 
-    
+
+#ifdef TEST_SPRITES_B
+    // --- SpritesB::drawErase ---
+    benchAverage = 0.0F; // Reset running average
+    for (uint8_t i = 0; i < 3; i = i + 1) {
+        benchStartTime = millis();
+        for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
+            for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
+                SpritesB::drawErase(x, y, images1x1::sprites::std, 0);
+                SpritesB::drawErase(x, y+2, images1x1::sprites::std, 0);
+                SpritesB::drawErase(x, y+4, images1x1::sprites::std, 0);
+                SpritesB::drawErase(x, y+6, images1x1::sprites::std, 0);
+            }
+        }
+        benchEndTime = millis();
+        benchmark(loopCount); // Benchmark for given loops
+        arduboy.fillScreen(WHITE); // Prepare 'white' screen for next loop
+    }
+    logConsoleAveragedResult(text::spritesBErase, (4*3)); // 4 blitter op's x 3 loops
+#endif
+
+
+    invertScreen(false); 
+
+
     // --- Sprites::drawSelfMasked ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < 3; i = i + 1) {
@@ -302,3 +322,4 @@ void testMonopixel() {
     logConsole(text::horizontalRule);           // "---------------------\n\n"
     
 }
+    
