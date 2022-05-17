@@ -2,6 +2,7 @@
 // #define TEST_FX_CHIP
 
 #include <Arduboy2.h>
+#include <ArduboyFX.h>
 Arduboy2 arduboy;
 
 #ifdef TEST_FX_CHIP
@@ -12,6 +13,7 @@ Arduboy2 arduboy;
 #include "src/images/Images.h"
 #include "src/utils/Messages.h"
 #include "src/utils/Utils.h"
+#include "fxdata/fxdata.h"
 
 
 void setup() {

@@ -1,0 +1,13 @@
+namespace images8x8_FX {
+
+    image_t Hero8x8_frame0 = "images/8x8hero/8x8hero_frame0.png"
+    image_t Hero8x8_frame1 = "images/8x8hero/8x8hero_frame1.png"
+    image_t Hero8x8_frame2 = "images/8x8hero/8x8hero_frame2.png"
+
+    image_t Banner = "images/Banner/Banner.png"
+    image_t BannerMask = "images/Banner/Banner+mask.png"
+
+    image_t MonopixelMask = "images/Monopixel/Monopixel+mask.png"
+
+};
+namespace_end

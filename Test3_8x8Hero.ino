@@ -1,6 +1,13 @@
 /* 
  *  Benchmark: 8x8 Hero
  */
+#include <ArduboyFX.h>
+
+constexpr uint24_t Hero8x8_FX[] = { 
+    Images::Hero8x8_frame0,
+    Images::Hero8x8_frame1,
+    Images::Hero8x8_frame2,
+};
 
 void test8x8Hero(bool byteAligned) {
 
@@ -315,7 +322,22 @@ void test8x8Hero(bool byteAligned) {
     }
     logConsoleAveragedResult(text::bitmapsCompMasked, 3);
     
-    
-    logConsole(text::horizontalRule);           // "---------------------\n\n"
+
+    // --- fx data ---
+    benchAverage = 0.0F; // Reset running average
+    for (uint8_t i = 0; i < 3; i = i + 1) {
+        benchStartTime = millis();
+        for (int16_t y = yStart; y < yEnd; y = y + yStep) {
+            for (int16_t x = xStart; x < xEnd; x = x + xStep) {
+                FX::drawBitmap(23, 48, Hero8x8_FX[i], 0, dbmNormal);
+                FX::drawBitmap(23, 48, Hero8x8_FX[i], 0, dbmNormal);
+            }
+        }
+        benchEndTime = millis();
+        benchmark(loopCount); // Benchmark for given loops
+        
+    }
+    logConsoleAveragedResult(text::bitmapsCompMasked, 3);
+    logConsole(text::horizontalRule);           
     
 }
