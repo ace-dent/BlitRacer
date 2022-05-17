@@ -1,7 +1,7 @@
 # 🏁 ~ Blit Racer ~ 🏁
 
 Race different blitting functions on the Arduboy®!  
-_Vrooom!!_ The sound of bytes tearing across SPI towards the final buffer.  
+_Vrooom!!_ The sound of bytes tearing across the SPI, speeding through the  buffer, to be the first to cross the raster line!  
 
 All race times are transmitted via serial USB.  
 
@@ -47,7 +47,7 @@ These blitting functions are grouped by rendering effect:
 
 **Special effects**
 
-- `FX::drawBitmap(,,,,dbmInvert)` (Inverts the background using the new image)
+- `FX::drawBitmap(,,,,dbmInvert)` (White pixels in the new image inverts (XOR's) the background)
 
 
 ## Race stages

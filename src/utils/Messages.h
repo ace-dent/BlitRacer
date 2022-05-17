@@ -76,7 +76,11 @@ void logArduboy(const char* str, bool lineFeed = false) {
     arduboy.setCursor(2,8);
     arduboy.print(reinterpret_cast<const __FlashStringHelper*>(str));
     if (lineFeed) arduboy.print(F("\n"));
+#ifdef TEST_FX_CHIP
+    FX::display();
+#else
     arduboy.display();
+#endif
     delay(1000);
 }
 
@@ -92,7 +96,7 @@ void logConsole(const char* str, bool lineFeed = false) {
 void logConsoleAveragedResult(const char* str, uint8_t sampleCount, bool lineFeed = false) {
     benchAverage /= (float)sampleCount;
     logConsole(str);                            // Function tested
-    Serial.print(benchAverage,3);               // Result (3 d.p.)
+    Serial.print(benchAverage,1);               // Result (to 1 d.p.)
     logConsole(text::micros);                   // " µs\n"
     if (lineFeed) logConsole(text::blank, newLine);
 }

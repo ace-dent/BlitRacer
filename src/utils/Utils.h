@@ -18,7 +18,11 @@ void benchmark(uint16_t loops, bool render = true) {
 
     // Bonus: render the screen buffer unless disabled
     if (render) {
+#ifdef TEST_FX_CHIP
+        FX::display(CLEAR_BUFFER);
+#else
         arduboy.display(CLEAR_BUFFER);
+#endif
         delay(200);
     }
 }
@@ -31,7 +35,11 @@ void invertScreen (bool invert = false) {
         arduboy.fillScreen(BLACK);
     }
     arduboy.invert(invert);
+#ifdef TEST_FX_CHIP
+    FX::display();
+#else
     arduboy.display();
+#endif
 }
 
 

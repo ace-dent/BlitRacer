@@ -1,8 +1,13 @@
 #define TEST_SPRITES_B
-// #define TEST_FX_DBM
+// #define TEST_FX_CHIP
 
 #include <Arduboy2.h>
 Arduboy2 arduboy;
+
+#ifdef TEST_FX_CHIP
+#include <ArduboyFX.h>      // Access the FX external flash
+#include "fxdata/fxdata.h"  // References to FX data
+#endif
 
 #include "src/images/Images.h"
 #include "src/utils/Messages.h"
@@ -16,6 +21,10 @@ void setup() {
     arduboy.begin();
     arduboy.setFrameRate(30);
     arduboy.clear();
+
+#ifdef TEST_FX_CHIP
+    FX::begin(FX_DATA_PAGE); // Initialise FX chip
+#endif
 
     logConsole(text::setup, newLine); // "Setup complete.\n"
     logArduboy(text::setup);
