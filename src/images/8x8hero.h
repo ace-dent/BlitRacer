@@ -116,82 +116,18 @@ namespace images8x8 {
 
     namespace bitmaps {
 
-        const uint8_t PROGMEM std0[] = {
-            // 8x8 px image
-            // Frame 0 - Hero jumping
-            0x01,  // ▓▓▓▓▓▓▓░
-            0x82,  // ░▓▓▓▓▓░▓
-            0xC4,  // ░░▓▓▓░▓▓
-            0x3B,  // ▓▓░░░▓░░
-            0x3B,  // ▓▓░░░▓░░
-            0xC4,  // ░░▓▓▓░▓▓
-            0x82,  // ░▓▓▓▓▓░▓
-            0x01   // ▓▓▓▓▓▓▓░
+        const uint8_t* std[] = {
+            &sprites::std[ (2+ (0*heroWidth)) ],
+            &sprites::std[ (2+ (1*heroWidth)) ],
+            &sprites::std[ (2+ (2*heroWidth)) ]
         };
-        const uint8_t PROGMEM std1[] = {
-            // 8x8 px image
-            // Frame 1 - Hero standing
-            0x10,  // ▓▓▓░▓▓▓▓
-            0x88,  // ░▓▓▓░▓▓▓
-            0xC4,  // ░░▓▓▓░▓▓
-            0x3B,  // ▓▓░░░▓░░
-            0x3B,  // ▓▓░░░▓░░
-            0xC4,  // ░░▓▓▓░▓▓
-            0x88,  // ░▓▓▓░▓▓▓
-            0x10   // ▓▓▓░▓▓▓▓
-        };
-        const uint8_t PROGMEM std2[] = {
-            // 8x8 px image
-            // Frame 2 - Hero sitting
-            0xC0,  // ░░▓▓▓▓▓▓
-            0xA0,  // ░▓░▓▓▓▓▓
-            0x90,  // ░▓▓░▓▓▓▓
-            0xEC,  // ░░░▓░░▓▓
-            0xEC,  // ░░░▓░░▓▓
-            0x90,  // ░▓▓░▓▓▓▓
-            0xA0,  // ░▓░▓▓▓▓▓
-            0xC0   // ░░▓▓▓▓▓▓
-        };
-        const uint8_t* std[] = {std0, std1, std2};
 
-        const uint8_t PROGMEM std0Mask[] = {
-            // 8x8 px image
-            // Frame 0 - Hero jumping (mask)
-            0x01,  // ▓▓▓▓▓▓▓░
-            0x82,  // ░▓▓▓▓▓░▓
-            0xC4,  // ░░▓▓▓░▓▓
-            0x3F,  // ▓▓░░░░░░
-            0x3F,  // ▓▓░░░░░░
-            0xC4,  // ░░▓▓▓░▓▓
-            0x82,  // ░▓▓▓▓▓░▓
-            0x01   // ▓▓▓▓▓▓▓░
+        const uint8_t* stdMask[] = {
+            &sprites::mask[ (2+ (0*heroWidth)) ],
+            &sprites::mask[ (2+ (1*heroWidth)) ],
+            &sprites::mask[ (2+ (2*heroWidth)) ]
         };
-        const uint8_t PROGMEM std1Mask[] = {
-            // 8x8 px image
-            // Frame 1 - Hero standing (mask)
-            0x10,  // ▓▓▓░▓▓▓▓
-            0x88,  // ░▓▓▓░▓▓▓
-            0xC4,  // ░░▓▓▓░▓▓
-            0x3F,  // ▓▓░░░░░░
-            0x3F,  // ▓▓░░░░░░
-            0xC4,  // ░░▓▓▓░▓▓
-            0x88,  // ░▓▓▓░▓▓▓
-            0x10   // ▓▓▓░▓▓▓▓
-        };
-        const uint8_t PROGMEM std2Mask[] = {
-            // 8x8 px image
-            // Frame 2 - Hero sitting (mask)
-            0xC0,  // ░░▓▓▓▓▓▓
-            0xA0,  // ░▓░▓▓▓▓▓
-            0x90,  // ░▓▓░▓▓▓▓
-            0xFC,  // ░░░░░░▓▓
-            0xFC,  // ░░░░░░▓▓
-            0x90,  // ░▓▓░▓▓▓▓
-            0xA0,  // ░▓░▓▓▓▓▓
-            0xC0   // ░░▓▓▓▓▓▓
-        };
-        const uint8_t* stdMask[] = {std0Mask, std1Mask, std2Mask};
-        
+
 
         const uint8_t PROGMEM slow0[] = {
             // 8x8 px image
@@ -229,7 +165,11 @@ namespace images8x8 {
             0x99,  // ░▓▓░░▓▓░
             0xFF   // ░░░░░░░░
         };
-        const uint8_t* slow[] = {slow0, slow1, slow2};
+        const uint8_t* slow[] = {
+            slow0,
+            slow1,
+            slow2
+        };
 
         const uint8_t PROGMEM slow0Mask[] = {
             // 8x8 px image
@@ -267,7 +207,11 @@ namespace images8x8 {
             0x99,  // ░▓▓░░▓▓░
             0xFF   // ░░░░░░░░
         };
-        const uint8_t* slowMask[] = {slow0Mask, slow1Mask, slow2Mask};
+        const uint8_t* slowMask[] = {
+            slow0Mask,
+            slow1Mask,
+            slow2Mask
+        };
 
 
         const uint8_t PROGMEM cabi0[] = {
@@ -286,7 +230,9 @@ namespace images8x8 {
             0xEC, 0xB2, 0x72, 0xDD, 0xA7, 0x3E, 0xE5, 0x3A, 0x59, 0xD9, 0x01
         };
         const uint8_t* const cabi[] = {
-            cabi0, cabi1, cabi2
+            cabi0,
+            cabi1,
+            cabi2
         };
 
         const uint8_t PROGMEM cabi0Mask[] = {
@@ -305,7 +251,9 @@ namespace images8x8 {
             0xEC, 0xB2, 0x72, 0xDD, 0x76, 0xEB, 0x3A, 0x59, 0xD9, 0x01
         };
         const uint8_t* const cabiMask[] = {
-            cabi0Mask, cabi1Mask, cabi2Mask
+            cabi0Mask,
+            cabi1Mask,
+            cabi2Mask
         };
 
     }
