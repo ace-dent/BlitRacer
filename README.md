@@ -59,7 +59,7 @@ A range of conditions (dimensions, frames of animation, byte alignment on render
 2. 
 3. 'Hero' sprite (8x8px)
 4. 
-5. 
+5. Banner style logo (106x18px)
 6. 
 7. 
 
@@ -71,10 +71,9 @@ Essentials (Race Stages):
 - [ ] *2* ~ Font
 - [x] *3* ~ 8x8 Hero (with short animation)
 - [ ] *4* ~ Chunky sprite (not modulo 8)
-- [ ] *5* ~ Banner
+- [x] *5* ~ Banner
 - [ ] *6* ~ Full screen
 - [ ] *7* ~ Animation (many frames)
-
 
 
 Extras:
@@ -112,5 +111,7 @@ Images converted using:
 ## Legal
 
 Please read the associated LICENSE document for this software.
+
+WARNING: May include flashing and flickering screen effects. Please do not use this program if you have, or may have, any photo-sensitivity or related health conditions.
 
 Arduboy® is a registered trademark of [Arduboy, Inc., USA](https://www.arduboy.com).

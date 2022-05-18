@@ -43,6 +43,18 @@ void invertScreen (bool invert = false) {
 }
 
 
+void candyCaneScreen(uint8_t offset, uint8_t color = WHITE) {
+
+    for (uint16_t y = 0; y < (WIDTH*2); y+=(offset+2)) {
+        arduboy.drawLine(y, 0, 0, y, color);
+    }
+    // Minimize flashing effect to keep below recommended 2Hz
+    if (offset < 2) {
+        delay(500);
+    }
+}
+
+
 // Maths utilities
 
 int16_t divideAndRoundUp(int16_t numerator, int16_t denominator) {

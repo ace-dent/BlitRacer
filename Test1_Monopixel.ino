@@ -309,13 +309,13 @@ void testMonopixel() {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
-                Sprites::drawErase(x, y, images1x1::sprites::mask, 0);
+                Sprites::drawErase(x, y, images1x1::sprites::eraseMask, 0);
                 Sprites::drawSelfMasked(x, y, images1x1::sprites::std, 0);
-                Sprites::drawErase(x, y+2, images1x1::sprites::mask, 0);
+                Sprites::drawErase(x, y+2, images1x1::sprites::eraseMask, 0);
                 Sprites::drawSelfMasked(x, y+2, images1x1::sprites::std, 0);
-                Sprites::drawErase(x, y+4, images1x1::sprites::mask, 0);
+                Sprites::drawErase(x, y+4, images1x1::sprites::eraseMask, 0);
                 Sprites::drawSelfMasked(x, y+4, images1x1::sprites::std, 0);
-                Sprites::drawErase(x, y+6, images1x1::sprites::mask, 0);
+                Sprites::drawErase(x, y+6, images1x1::sprites::eraseMask, 0);
                 Sprites::drawSelfMasked(x, y+6, images1x1::sprites::std, 0);
             }
         }
@@ -332,13 +332,13 @@ void testMonopixel() {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
-                SpritesB::drawErase(x, y, images1x1::sprites::mask, 0);
+                SpritesB::drawErase(x, y, images1x1::sprites::eraseMask, 0);
                 SpritesB::drawSelfMasked(x, y, images1x1::sprites::std, 0);
-                SpritesB::drawErase(x, y+2, images1x1::sprites::mask, 0);
+                SpritesB::drawErase(x, y+2, images1x1::sprites::eraseMask, 0);
                 SpritesB::drawSelfMasked(x, y+2, images1x1::sprites::std, 0);
-                SpritesB::drawErase(x, y+4, images1x1::sprites::mask, 0);
+                SpritesB::drawErase(x, y+4, images1x1::sprites::eraseMask, 0);
                 SpritesB::drawSelfMasked(x, y+4, images1x1::sprites::std, 0);
-                SpritesB::drawErase(x, y+6, images1x1::sprites::mask, 0);
+                SpritesB::drawErase(x, y+6, images1x1::sprites::eraseMask, 0);
                 SpritesB::drawSelfMasked(x, y+6, images1x1::sprites::std, 0);
             }
         }

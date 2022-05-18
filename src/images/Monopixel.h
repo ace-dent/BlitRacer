@@ -24,6 +24,11 @@ namespace images1x1 {
         };
 
         const uint8_t PROGMEM mask[] = {
+            // 1x1 px image
+            0x01   // ▓▓▓▓▓▓▓░
+        };
+
+        const uint8_t PROGMEM eraseMask[] = {
             monopixWidth, monopixHeight, // 1x1 px image
             0x01   // ▓▓▓▓▓▓▓░
         };

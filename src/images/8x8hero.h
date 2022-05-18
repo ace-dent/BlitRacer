@@ -49,8 +49,8 @@ namespace images8x8 {
             0xC0   // ░░▓▓▓▓▓▓
         };
 
-        const uint8_t PROGMEM mask[] = {
-            // 8x8 px images
+        const uint8_t PROGMEM eraseMask[] = {
+            heroWidth, heroHeight,  // 8x8 px images
             // Frame 0 - Hero jumping (mask)
             0x01,  // ▓▓▓▓▓▓▓░
             0x82,  // ░▓▓▓▓▓░▓
@@ -78,6 +78,10 @@ namespace images8x8 {
             0x90,  // ░▓▓░▓▓▓▓
             0xA0,  // ░▓░▓▓▓▓▓
             0xC0   // ░░▓▓▓▓▓▓
+        };
+
+        const uint8_t* mask = {
+            &eraseMask[2]
         };
 
 
@@ -123,9 +127,9 @@ namespace images8x8 {
         };
 
         const uint8_t* stdMask[] = {
-            &sprites::mask[ (2+ (0*heroWidth)) ],
-            &sprites::mask[ (2+ (1*heroWidth)) ],
-            &sprites::mask[ (2+ (2*heroWidth)) ]
+            &sprites::eraseMask[ (2+ (0*heroWidth)) ],
+            &sprites::eraseMask[ (2+ (1*heroWidth)) ],
+            &sprites::eraseMask[ (2+ (2*heroWidth)) ]
         };
 
 
