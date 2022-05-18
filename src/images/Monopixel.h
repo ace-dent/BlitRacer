@@ -47,6 +47,7 @@ namespace images1x1 {
             0x01   // ▓▓▓▓▓▓▓░
         };
 
+#ifdef TEST_SLOW_BITMAP
         const uint8_t PROGMEM slow[] = {
             // 1x1 px image
             0x80   // ░▓▓▓▓▓▓▓
@@ -56,7 +57,9 @@ namespace images1x1 {
             // 1x1 px image
             0x80   // ░▓▓▓▓▓▓▓
         };
+#endif
 
+#ifdef TEST_COMPRESSED
         const uint8_t PROGMEM cabi[] = {
             (monopixWidth-1), (monopixHeight-1), // 1x1 px image
             0xd3
@@ -66,6 +69,7 @@ namespace images1x1 {
             (monopixWidth-1), (monopixHeight-1), // 1x1 px image
             0xd3
         };
+#endif
 
     }
 }

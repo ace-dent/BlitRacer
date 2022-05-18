@@ -1,4 +1,6 @@
 #define TEST_SPRITES_B
+#define TEST_SLOW_BITMAP
+#define TEST_COMPRESSED
 // #define TEST_FX_CHIP
 
 #include <Arduboy2.h>

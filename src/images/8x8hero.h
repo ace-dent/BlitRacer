@@ -129,6 +129,7 @@ namespace images8x8 {
         };
 
 
+#ifdef TEST_SLOW_BITMAP
         const uint8_t PROGMEM slow0[] = {
             // 8x8 px image
             // Frame 0 - Hero jumping
@@ -212,8 +213,10 @@ namespace images8x8 {
             slow1Mask,
             slow2Mask
         };
+#endif
 
 
+#ifdef TEST_COMPRESSED
         const uint8_t PROGMEM cabi0[] = {
             (heroWidth-1), (heroHeight-1),  // 8x8 px image
             // Frame 0 - Hero jumping
@@ -255,6 +258,7 @@ namespace images8x8 {
             cabi1Mask,
             cabi2Mask
         };
+#endif
 
     }
 

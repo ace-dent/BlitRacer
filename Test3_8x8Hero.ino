@@ -34,6 +34,11 @@ void test8x8Hero(bool byteAligned) {
 
 
 
+    // OVERWRITE FUNCTIONS                                          //
+    // (replaces any underlying background with new image data)
+    // ------------------------------------------------------------ //
+
+
     // --- Sprites::drawOverwrite ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
@@ -62,17 +67,16 @@ void test8x8Hero(bool byteAligned) {
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
     }
-    logConsoleAveragedResult(text::spritesBOverwrite, testRepeats, newLine);
+    logConsoleAveragedResult(text::spritesBOverwrite, testRepeats);
 #endif
 
 
-#ifdef TEST_FX_CHIP
-    FX::drawBitmap(x, y, FXlogo, 0, dbmNormal);
-    FX::display(CLEAR_BUFFER);
-#endif
 
-    /* --- */
+    // SELF MASKED FUNCTIONS                                        //
+    // (only binary `1` in the new image replaces the background)
+    // ------------------------------------------------------------ //
 
+    logConsole(text::blank, newLine);           // ""\n
 
     invertScreen(true); 
 
@@ -161,6 +165,7 @@ void test8x8Hero(bool byteAligned) {
     logConsoleAveragedResult(text::bitmapsStd, testRepeats);
 
 
+#ifdef TEST_SLOW_BITMAP
     // --- arduboy.drawSlowXYBitmap ~  Sprites::drawSelfMasked ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
@@ -174,8 +179,10 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::bitmapsSlow, testRepeats);
-    
-    
+#endif
+
+
+#ifdef TEST_COMPRESSED
     // --- arduboy.drawCompressed ~  Sprites::drawSelfMasked ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
@@ -188,11 +195,16 @@ void test8x8Hero(bool byteAligned) {
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
     }
-    logConsoleAveragedResult(text::bitmapsComp, testRepeats, newLine);
+    logConsoleAveragedResult(text::bitmapsComp, testRepeats);
+#endif
 
 
-    /* --- */
 
+    // FULLY MASKED FUNCTIONS                                       //
+    // (new images can have black, white or transparent pixels)
+    // ------------------------------------------------------------ //
+
+    logConsole(text::blank, newLine);           // ""\n
 
     // --- Sprites::drawExternalMask ---
     benchAverage = 0.0F; // Reset running average
@@ -308,6 +320,7 @@ void test8x8Hero(bool byteAligned) {
     logConsoleAveragedResult(text::bitmapsStdMasked, testRepeats);
 
 
+#ifdef TEST_SLOW_BITMAP
     // --- arduboy.drawSlowXYBitmap with extra masking step ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
@@ -322,8 +335,10 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::bitmapsSlowMasked, testRepeats);
+#endif
 
 
+#ifdef TEST_COMPRESSED
     // --- arduboy.drawCompressed with extra masking step ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
@@ -338,6 +353,7 @@ void test8x8Hero(bool byteAligned) {
         benchmark(loopCount); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::bitmapsCompMasked, testRepeats);
+#endif
 
 
     logConsole(text::horizontalRule);           // "---------------------\n\n"

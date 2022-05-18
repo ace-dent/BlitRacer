@@ -93,10 +93,9 @@ void logConsole(const char* str, bool lineFeed = false) {
 }
 
 // Determine and print the average test result to the serial console
-void logConsoleAveragedResult(const char* str, uint8_t sampleCount, bool lineFeed = false) {
+void logConsoleAveragedResult(const char* str, uint8_t sampleCount) {
     benchAverage /= (float)sampleCount;
     logConsole(str);                            // Function tested
     Serial.print(benchAverage,1);               // Result (to 1 d.p.)
     logConsole(text::micros);                   // " µs\n"
-    if (lineFeed) logConsole(text::blank, newLine);
 }
