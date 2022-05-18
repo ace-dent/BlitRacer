@@ -28,7 +28,7 @@ void testMonopixel() {
 
     // --- Sprites::drawOverwrite ---
     benchAverage = 0.0F; // Reset running average
-    for (uint8_t i = 0; i < 3; i = i + 1) {
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
@@ -41,13 +41,13 @@ void testMonopixel() {
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
     }
-    logConsoleAveragedResult(text::spritesOverwrite, (4*3)); // 4 blitter op's x 3 loops
+    logConsoleAveragedResult(text::spritesOverwrite, (4*testRepeats)); // 4 blitter op's per loop
 
 
 #ifdef TEST_SPRITES_B
     // --- SpritesB::drawOverwrite ---
     benchAverage = 0.0F; // Reset running average
-    for (uint8_t i = 0; i < 3; i = i + 1) {
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
@@ -60,7 +60,7 @@ void testMonopixel() {
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
     }
-    logConsoleAveragedResult(text::spritesBOverwrite, (4*3), newLine); // 4 blitter op's x 3 loops
+    logConsoleAveragedResult(text::spritesBOverwrite, (4*testRepeats), newLine); // 4 blitter op's per loop 
 #endif
 
 
@@ -72,7 +72,7 @@ void testMonopixel() {
 
     // --- Sprites::drawErase ---
     benchAverage = 0.0F; // Reset running average
-    for (uint8_t i = 0; i < 3; i = i + 1) {
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
@@ -86,13 +86,13 @@ void testMonopixel() {
         benchmark(loopCount); // Benchmark for given loops
         arduboy.fillScreen(WHITE); // Prepare 'white' screen for next loop
     }
-    logConsoleAveragedResult(text::spritesErase, (4*3)); // 4 blitter op's x 3 loops
+    logConsoleAveragedResult(text::spritesErase, (4*testRepeats)); // 4 blitter op's per loop
 
 
 #ifdef TEST_SPRITES_B
     // --- SpritesB::drawErase ---
     benchAverage = 0.0F; // Reset running average
-    for (uint8_t i = 0; i < 3; i = i + 1) {
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
@@ -106,7 +106,7 @@ void testMonopixel() {
         benchmark(loopCount); // Benchmark for given loops
         arduboy.fillScreen(WHITE); // Prepare 'white' screen for next loop
     }
-    logConsoleAveragedResult(text::spritesBErase, (4*3)); // 4 blitter op's x 3 loops
+    logConsoleAveragedResult(text::spritesBErase, (4*testRepeats)); // 4 blitter op's per loop
 #endif
 
 
@@ -115,7 +115,7 @@ void testMonopixel() {
 
     // --- Sprites::drawSelfMasked ---
     benchAverage = 0.0F; // Reset running average
-    for (uint8_t i = 0; i < 3; i = i + 1) {
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
@@ -128,12 +128,13 @@ void testMonopixel() {
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
     }
-    logConsoleAveragedResult(text::spritesSelfMask, (4*3)); // 4 blitter op's x 3 loops
-    
-    
+    logConsoleAveragedResult(text::spritesSelfMask, (4*testRepeats)); // 4 blitter op's per loop
+
+
+
     // --- arduboy.drawBitmap ~ Sprites::drawSelfMasked ---
     benchAverage = 0.0F; // Reset running average
-    for (uint8_t i = 0; i < 3; i = i + 1) {
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
@@ -145,14 +146,13 @@ void testMonopixel() {
         }
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
-        
     }
-    logConsoleAveragedResult(text::bitmapsStd, (4*3)); // 4 blitter op's x 3 loops
+    logConsoleAveragedResult(text::bitmapsStd, (4*testRepeats)); // 4 blitter op's per loop
     
     
     // --- arduboy.drawSlowXYBitmap ~  Sprites::drawSelfMasked ---
     benchAverage = 0.0F; // Reset running average
-    for (uint8_t i = 0; i < 3; i = i + 1) {
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
@@ -164,14 +164,13 @@ void testMonopixel() {
         }
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
-        
     }
-    logConsoleAveragedResult(text::bitmapsSlow, (4*3)); // 4 blitter op's x 3 loops
+    logConsoleAveragedResult(text::bitmapsSlow, (4*testRepeats)); // 4 blitter op's per loop
     
     
     // --- arduboy.drawCompressed ~  Sprites::drawSelfMasked ---
     benchAverage = 0.0F; // Reset running average
-    for (uint8_t i = 0; i < 3; i = i + 1) {
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
@@ -183,16 +182,15 @@ void testMonopixel() {
         }
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
-        
     }
-    logConsoleAveragedResult(text::bitmapsComp, (4*3), newLine); // 4 blitter op's x 3 loops
+    logConsoleAveragedResult(text::bitmapsComp, (4*testRepeats), newLine); // 4 blitter op's per loop
     
     
     
     
     // --- Sprites::drawExternalMask ---
     benchAverage = 0.0F; // Reset running average
-    for (uint8_t i = 0; i < 3; i = i + 1) {
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
@@ -205,12 +203,12 @@ void testMonopixel() {
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
     }
-    logConsoleAveragedResult(text::spritesExtMask, (4*3)); // 4 blitter op's x 3 loops
+    logConsoleAveragedResult(text::spritesExtMask, (4*testRepeats)); // 4 blitter op's per loop
     
     
     // --- Sprites::drawPlusMask ---
     benchAverage = 0.0F; // Reset running average
-    for (uint8_t i = 0; i < 3; i = i + 1) {
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
@@ -222,14 +220,13 @@ void testMonopixel() {
         }
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
-        
     }
-    logConsoleAveragedResult(text::spritesPlusMask, (4*3)); // 4 blitter op's x 3 loops
+    logConsoleAveragedResult(text::spritesPlusMask, (4*testRepeats)); // 4 blitter op's per loop
     
     
     // --- Sprites::drawSelfMasked with extra masking step ---
     benchAverage = 0.0F; // Reset running average
-    for (uint8_t i = 0; i < 3; i = i + 1) {
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
@@ -245,14 +242,13 @@ void testMonopixel() {
         }
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
-        
     }
-    logConsoleAveragedResult(text::spritesEraseMasked, (4*3)); // 4 blitter op's x 3 loops
+    logConsoleAveragedResult(text::spritesEraseMasked, (4*testRepeats)); // 4 blitter op's per loop
     
     
     // --- arduboy.drawBitmap with extra masking step ---
     benchAverage = 0.0F; // Reset running average
-    for (uint8_t i = 0; i < 3; i = i + 1) {
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
@@ -268,14 +264,13 @@ void testMonopixel() {
         }
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
-        
     }
-    logConsoleAveragedResult(text::bitmapsStdMasked, (4*3)); // 4 blitter op's x 3 loops
+    logConsoleAveragedResult(text::bitmapsStdMasked, (4*testRepeats)); // 4 blitter op's per loop
     
     
     // --- arduboy.drawSlowXYBitmap with extra masking step ---
     benchAverage = 0.0F; // Reset running average
-    for (uint8_t i = 0; i < 3; i = i + 1) {
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
@@ -291,14 +286,13 @@ void testMonopixel() {
         }
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
-        
     }
-    logConsoleAveragedResult(text::bitmapsSlowMasked, (4*3)); // 4 blitter op's x 3 loops
+    logConsoleAveragedResult(text::bitmapsSlowMasked, (4*testRepeats)); // 4 blitter op's per loop
     
     
     // --- arduboy.drawCompressed with extra masking step ---
     benchAverage = 0.0F; // Reset running average
-    for (uint8_t i = 0; i < 3; i = i + 1) {
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
@@ -314,12 +308,10 @@ void testMonopixel() {
         }
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
-        
     }
-    logConsoleAveragedResult(text::bitmapsCompMasked, (4*3)); // 4 blitter op's x 3 loops
-    
-    
+    logConsoleAveragedResult(text::bitmapsCompMasked, (4*testRepeats)); // 4 blitter op's per loop
+
+
     logConsole(text::horizontalRule);           // "---------------------\n\n"
-    
+
 }
-    

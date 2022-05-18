@@ -10,6 +10,7 @@ Arduboy2 arduboy;
 #endif
 
 #include "src/images/Images.h"
+#include "src/utils/Constants.h"
 #include "src/utils/Messages.h"
 #include "src/utils/Utils.h"
 
