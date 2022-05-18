@@ -76,6 +76,45 @@ void testMonopixel() {
 
     logConsole(text::blank, newLine);           // ""\n
 
+
+    // --- Sprites::drawSelfMasked ---
+    benchAverage = 0.0F; // Reset running average
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
+        benchStartTime = millis();
+        for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
+            for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
+                Sprites::drawSelfMasked(x, y, images1x1::sprites::std, 0);
+                Sprites::drawSelfMasked(x, y+2, images1x1::sprites::std, 0);
+                Sprites::drawSelfMasked(x, y+4, images1x1::sprites::std, 0);
+                Sprites::drawSelfMasked(x, y+6, images1x1::sprites::std, 0);
+            }
+        }
+        benchEndTime = millis();
+        benchmark(loopCount); // Benchmark for given loops
+    }
+    logConsoleAveragedResult(text::spritesSelfMask, (4*testRepeats)); // 4 blitter op's per loop
+
+
+#ifdef TEST_SPRITES_B
+    // --- SpritesB::drawSelfMasked ---
+    benchAverage = 0.0F; // Reset running average
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
+        benchStartTime = millis();
+        for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
+            for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
+                SpritesB::drawSelfMasked(x, y, images1x1::sprites::std, 0);
+                SpritesB::drawSelfMasked(x, y+2, images1x1::sprites::std, 0);
+                SpritesB::drawSelfMasked(x, y+4, images1x1::sprites::std, 0);
+                SpritesB::drawSelfMasked(x, y+6, images1x1::sprites::std, 0);
+            }
+        }
+        benchEndTime = millis();
+        benchmark(loopCount); // Benchmark for given loops
+    }
+    logConsoleAveragedResult(text::spritesBSelfMask, (4*testRepeats)); // 4 blitter op's per loop
+#endif
+
+
     invertScreen(true); 
 
 
@@ -120,24 +159,6 @@ void testMonopixel() {
 
 
     invertScreen(false); 
-
-
-    // --- Sprites::drawSelfMasked ---
-    benchAverage = 0.0F; // Reset running average
-    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        benchStartTime = millis();
-        for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
-            for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
-                Sprites::drawSelfMasked(x, y, images1x1::sprites::std, 0);
-                Sprites::drawSelfMasked(x, y+2, images1x1::sprites::std, 0);
-                Sprites::drawSelfMasked(x, y+4, images1x1::sprites::std, 0);
-                Sprites::drawSelfMasked(x, y+6, images1x1::sprites::std, 0);
-            }
-        }
-        benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
-    }
-    logConsoleAveragedResult(text::spritesSelfMask, (4*testRepeats)); // 4 blitter op's per loop
 
 
     // --- arduboy.drawBitmap ~ Sprites::drawSelfMasked ---
@@ -206,6 +227,44 @@ void testMonopixel() {
     logConsole(text::blank, newLine);           // ""\n
 
 
+    // --- Sprites::drawPlusMask ---
+    benchAverage = 0.0F; // Reset running average
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
+        benchStartTime = millis();
+        for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
+            for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
+                Sprites::drawPlusMask(x, y, images1x1::sprites::plusMask, 0);
+                Sprites::drawPlusMask(x, y+2, images1x1::sprites::plusMask, 0);
+                Sprites::drawPlusMask(x, y+4, images1x1::sprites::plusMask, 0);
+                Sprites::drawPlusMask(x, y+6, images1x1::sprites::plusMask, 0);
+            }
+        }
+        benchEndTime = millis();
+        benchmark(loopCount); // Benchmark for given loops
+    }
+    logConsoleAveragedResult(text::spritesPlusMask, (4*testRepeats)); // 4 blitter op's per loop
+
+
+#ifdef TEST_SPRITES_B
+    // --- SpritesB::drawPlusMask ---
+    benchAverage = 0.0F; // Reset running average
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
+        benchStartTime = millis();
+        for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
+            for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
+                SpritesB::drawPlusMask(x, y, images1x1::sprites::plusMask, 0);
+                SpritesB::drawPlusMask(x, y+2, images1x1::sprites::plusMask, 0);
+                SpritesB::drawPlusMask(x, y+4, images1x1::sprites::plusMask, 0);
+                SpritesB::drawPlusMask(x, y+6, images1x1::sprites::plusMask, 0);
+            }
+        }
+        benchEndTime = millis();
+        benchmark(loopCount); // Benchmark for given loops
+    }
+    logConsoleAveragedResult(text::spritesBPlusMask, (4*testRepeats)); // 4 blitter op's per loop
+#endif
+
+
     // --- Sprites::drawExternalMask ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
@@ -224,22 +283,24 @@ void testMonopixel() {
     logConsoleAveragedResult(text::spritesExtMask, (4*testRepeats)); // 4 blitter op's per loop
 
 
-    // --- Sprites::drawPlusMask ---
+#ifdef TEST_SPRITES_B
+    // --- SpritesB::drawExternalMask ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
             for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
-                Sprites::drawPlusMask(x, y, images1x1::sprites::plusMask, 0);
-                Sprites::drawPlusMask(x, y+2, images1x1::sprites::plusMask, 0);
-                Sprites::drawPlusMask(x, y+4, images1x1::sprites::plusMask, 0);
-                Sprites::drawPlusMask(x, y+6, images1x1::sprites::plusMask, 0);
+                SpritesB::drawExternalMask(x, y, images1x1::sprites::std, images1x1::sprites::mask, 0, 0);
+                SpritesB::drawExternalMask(x, y+2, images1x1::sprites::std, images1x1::sprites::mask, 0, 0);
+                SpritesB::drawExternalMask(x, y+4, images1x1::sprites::std, images1x1::sprites::mask, 0, 0);
+                SpritesB::drawExternalMask(x, y+6, images1x1::sprites::std, images1x1::sprites::mask, 0, 0);
             }
         }
         benchEndTime = millis();
         benchmark(loopCount); // Benchmark for given loops
     }
-    logConsoleAveragedResult(text::spritesPlusMask, (4*testRepeats)); // 4 blitter op's per loop
+    logConsoleAveragedResult(text::spritesBExtMask, (4*testRepeats)); // 4 blitter op's per loop
+#endif
 
 
     // --- Sprites::drawSelfMasked with extra masking step ---
@@ -262,6 +323,30 @@ void testMonopixel() {
         benchmark(loopCount); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesEraseMasked, (4*testRepeats)); // 4 blitter op's per loop
+
+
+#ifdef TEST_SPRITES_B
+    // --- SpritesB::drawSelfMasked with extra masking step ---
+    benchAverage = 0.0F; // Reset running average
+    for (uint8_t i = 0; i < testRepeats; i = i + 1) {
+        benchStartTime = millis();
+        for (int16_t y = yStart; y < HEIGHT; y = y + yStep) {
+            for (int16_t x = xStart; x < WIDTH; x = x + xStep) {
+                SpritesB::drawErase(x, y, images1x1::sprites::mask, 0);
+                SpritesB::drawSelfMasked(x, y, images1x1::sprites::std, 0);
+                SpritesB::drawErase(x, y+2, images1x1::sprites::mask, 0);
+                SpritesB::drawSelfMasked(x, y+2, images1x1::sprites::std, 0);
+                SpritesB::drawErase(x, y+4, images1x1::sprites::mask, 0);
+                SpritesB::drawSelfMasked(x, y+4, images1x1::sprites::std, 0);
+                SpritesB::drawErase(x, y+6, images1x1::sprites::mask, 0);
+                SpritesB::drawSelfMasked(x, y+6, images1x1::sprites::std, 0);
+            }
+        }
+        benchEndTime = millis();
+        benchmark(loopCount); // Benchmark for given loops
+    }
+    logConsoleAveragedResult(text::spritesBEraseMasked, (4*testRepeats)); // 4 blitter op's per loop
+#endif
 
 
     // --- arduboy.drawBitmap with extra masking step ---

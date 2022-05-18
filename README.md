@@ -21,12 +21,12 @@ These blitting functions are grouped by rendering effect:
 
 **Self masked** (only binary `1` in the new image replaces the underlying background)
 
-- `Sprites::drawErase` (equivalent with inverted graphics)
-- `SpritesB::drawErase` (equivalent with inverted graphics)
-- `FX::drawBitmap(,,,,dbmBlack)` (equivalent with inverted graphics)
 - `Sprites::drawSelfMasked`
 - `SpritesB::drawSelfMasked`
+- `Sprites::drawErase` (equivalent with inverted graphics)
+- `SpritesB::drawErase` (equivalent with inverted graphics)
 - `FX::drawBitmap(,,,,dbmWhite)`
+- `FX::drawBitmap(,,,,dbmBlack)` (equivalent with inverted graphics)
 - `arduboy.drawBitmap`
 - `arduboy.drawSlowXYBitmap`
 - `arduboy.drawCompressed`
@@ -34,10 +34,10 @@ These blitting functions are grouped by rendering effect:
 
 **Fully masked** (new images can have black, white or transparent pixels)
 
-- `Sprites::drawExternalMask`
-- `SpritesB::drawExternalMask` 
 - `Sprites::drawPlusMask`
 - `SpritesB::drawPlusMask`
+- `Sprites::drawExternalMask`
+- `SpritesB::drawExternalMask` 
 - `FX::drawBitmap(,,,,dbmMasked)`
 - `Sprites::drawSelfMasked` (with extra masking step `drawErase` for black pixels)
 - `FX::drawBitmap(,,,,dbmWhite)` (with extra masking step `dbmBlack` for black pixels)
