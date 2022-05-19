@@ -49,7 +49,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesOverwrite, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesOverwrite, testRepeats);
 
@@ -65,7 +65,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesBOverwrite, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesBOverwrite, testRepeats);
 #endif
@@ -89,7 +89,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesSelfMask, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesSelfMask, testRepeats);
 
@@ -105,7 +105,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesBSelfMask, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesBSelfMask, testRepeats);
 #endif
@@ -124,7 +124,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesErase, i); // Benchmark for given loops
         arduboy.fillScreen(WHITE); // Clear to 'white' for next render
     }
     logConsoleAveragedResult(text::spritesErase, testRepeats);
@@ -141,7 +141,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesBErase, i); // Benchmark for given loops
         arduboy.fillScreen(WHITE); // Clear to 'white' for next render
     }
     logConsoleAveragedResult(text::spritesBErase, testRepeats);
@@ -161,7 +161,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::bitmapsStd, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::bitmapsStd, testRepeats);
 
@@ -177,7 +177,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::bitmapsSlow, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::bitmapsSlow, testRepeats);
 #endif
@@ -194,7 +194,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::bitmapsComp, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::bitmapsComp, testRepeats);
 #endif
@@ -218,7 +218,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesPlusMask, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesPlusMask, testRepeats);
 
@@ -234,7 +234,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesBPlusMask, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesBPlusMask, testRepeats);
 #endif
@@ -250,7 +250,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesExtMask, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesExtMask, testRepeats);
 
@@ -266,7 +266,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesBExtMask, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesBExtMask, testRepeats);
 #endif
@@ -283,7 +283,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesEraseMasked, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesEraseMasked, testRepeats);
 
@@ -300,7 +300,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesBEraseMasked, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesBEraseMasked, testRepeats);
 #endif
@@ -317,7 +317,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::bitmapsStdMasked, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::bitmapsStdMasked, testRepeats);
 
@@ -334,7 +334,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::bitmapsSlowMasked, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::bitmapsSlowMasked, testRepeats);
 #endif
@@ -352,7 +352,7 @@ void test8x8Hero(bool byteAligned) {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::bitmapsCompMasked, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::bitmapsCompMasked, testRepeats);
 #endif

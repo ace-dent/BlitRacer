@@ -44,7 +44,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesOverwrite ,i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesOverwrite, (4*testRepeats)); // 4 blitter op's per loop
 
@@ -63,7 +63,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesBOverwrite ,i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesBOverwrite, (4*testRepeats)); // 4 blitter op's per loop 
 #endif
@@ -90,7 +90,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesSelfMask ,i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesSelfMask, (4*testRepeats)); // 4 blitter op's per loop
 
@@ -109,7 +109,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesBSelfMask , i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesBSelfMask, (4*testRepeats)); // 4 blitter op's per loop
 #endif
@@ -131,7 +131,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesErase, i); // Benchmark for given loops
         arduboy.fillScreen(WHITE); // Prepare 'white' screen for next loop
     }
     logConsoleAveragedResult(text::spritesErase, (4*testRepeats)); // 4 blitter op's per loop
@@ -151,7 +151,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesBErase, i); // Benchmark for given loops
         arduboy.fillScreen(WHITE); // Prepare 'white' screen for next loop
     }
     logConsoleAveragedResult(text::spritesBErase, (4*testRepeats)); // 4 blitter op's per loop
@@ -174,7 +174,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::bitmapsStd, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::bitmapsStd, (4*testRepeats)); // 4 blitter op's per loop
 
@@ -193,7 +193,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::bitmapsSlow, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::bitmapsSlow, (4*testRepeats)); // 4 blitter op's per loop
 #endif
@@ -213,7 +213,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::bitmapsComp, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::bitmapsComp, (4*testRepeats)); // 4 blitter op's per loop
 #endif
@@ -240,7 +240,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesPlusMask, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesPlusMask, (4*testRepeats)); // 4 blitter op's per loop
 
@@ -259,7 +259,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesBPlusMask, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesBPlusMask, (4*testRepeats)); // 4 blitter op's per loop
 #endif
@@ -278,7 +278,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesExtMask, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesExtMask, (4*testRepeats)); // 4 blitter op's per loop
 
@@ -297,7 +297,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesBExtMask, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesBExtMask, (4*testRepeats)); // 4 blitter op's per loop
 #endif
@@ -320,7 +320,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesEraseMasked, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesEraseMasked, (4*testRepeats)); // 4 blitter op's per loop
 
@@ -343,7 +343,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::spritesBEraseMasked, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::spritesBEraseMasked, (4*testRepeats)); // 4 blitter op's per loop
 #endif
@@ -366,7 +366,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::bitmapsStdMasked, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::bitmapsStdMasked, (4*testRepeats)); // 4 blitter op's per loop
 
@@ -389,7 +389,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::bitmapsSlowMasked, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::bitmapsSlowMasked, (4*testRepeats)); // 4 blitter op's per loop
 #endif
@@ -413,7 +413,7 @@ void testMonopixel() {
             }
         }
         benchEndTime = millis();
-        benchmark(loopCount); // Benchmark for given loops
+        benchmark(loopCount, text::bitmapsCompMasked, i); // Benchmark for given loops
     }
     logConsoleAveragedResult(text::bitmapsCompMasked, (4*testRepeats)); // 4 blitter op's per loop
 #endif

@@ -1,7 +1,7 @@
 # 🏁 ~ Blit Racer ~ 🏁
 
 Race different blitting functions on the Arduboy®!  
-_Vrooom!!_ The sound of bytes tearing across the SPI, speeding through the  buffer, to be the first to cross the raster line!  
+_Vrooom!!_ The sound of bytes tearing across the SPI, speeding through the buffer, to be the first to cross the raster line!  
 
 All race times are transmitted via serial USB.  
 
@@ -78,8 +78,8 @@ Essentials (Race Stages):
 
 Extras:
 
-- [ ] Add text overlay for each test(?)
-- [ ]  Make Bitmaps just use pointers to Sprites (no need to encode data twice)?
+- [ ] List start and end time for entire test.
+- [ ] Menu to select specific tests. Press key to pause and/or exit test, returning to menu.
 - [ ] Splash screen + fun!
 - [ ] Podium / stats at the end of all races.
 - [ ] Record core temperature at start and end of run. Does this affect clock oscillator and correlate to variance? `power_adc_enable(); // Re-enable Analog to Digital Converter module for temperature reading`. [(1)](http://web.archive.org/web/20180820131636/http://www.narkidae.com/research/atmega-core-temperature-sensor/) [(2)](https://github.com/MLXXXp/Arduboy2/pull/8/commits/c962257488bc4c8e7f12c66cfcd9e91990151b39).
@@ -89,7 +89,6 @@ Extras:
 
 Other formats to add:
 
-- [ ] SpritesB!! (Consider how best to add to the existing test framework)
 - [ ] `arduboy.paintScreen` for full screen image (RAM vs PROGMEM) 
 - [ ] [ArdBitmap](https://github.com/igvina/ArdBitmap) [(forum)](https://community.arduboy.com/t/ardbitmap-bitmap-library-tools/2631).
 - [ ] [FX::drawBitmap](https://github.com/MrBlinky/Arduboy-homemade-package/blob/694837952dbfb74ea8326cf009717cccf530b78b/board-package-source/libraries/ArduboyFX/src/ArduboyFX.h#L42-L64) (Perhaps use `#define FX_BUILD` for original hardware compatibility?)
