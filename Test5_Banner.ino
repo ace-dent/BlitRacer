@@ -13,12 +13,12 @@ void testBanner() {
 
 
     // Parameters for rendering loops
-    constexpr int16_t xStart = ((WIDTH-bannerWidth)/2);
-    constexpr int16_t yStart = ((HEIGHT-bannerHeight)/2);
-    constexpr int16_t xEnd = WIDTH + bannerWidth;
-    constexpr int16_t yEnd = HEIGHT + bannerHeight;
-    uint8_t xStep = bannerWidth+10;  // Draw just 1px at the edge, rest off screen
-    uint8_t yStep = bannerHeight+19; // Draw just 1px at the edge, rest off screen
+    constexpr int16_t xStart = ((WIDTH-imagesBanner::width)/2);
+    constexpr int16_t yStart = ((HEIGHT-imagesBanner::height)/2);
+    constexpr int16_t xEnd = WIDTH + imagesBanner::width;
+    constexpr int16_t yEnd = HEIGHT + imagesBanner::height;
+    uint8_t xStep = imagesBanner::width+10;  // Draw just 1px at the edge, rest off screen
+    uint8_t yStep = imagesBanner::height+19; // Draw just 1px at the edge, rest off screen
 
 
     // Determine the total count for the inner x,y loops
@@ -35,7 +35,7 @@ void testBanner() {
     // --- Sprites::drawOverwrite ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
@@ -52,7 +52,7 @@ void testBanner() {
     // --- SpritesB::drawOverwrite ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
@@ -77,7 +77,7 @@ void testBanner() {
     // --- Sprites::drawSelfMasked ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
@@ -94,7 +94,7 @@ void testBanner() {
     // --- SpritesB::drawSelfMasked ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
@@ -114,7 +114,7 @@ void testBanner() {
     // --- Sprites::drawErase ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i, BLACK);
+        fillScreenCandyCane(i, BLACK);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
@@ -132,7 +132,7 @@ void testBanner() {
     // --- SpritesB::drawErase ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i, BLACK);
+        fillScreenCandyCane(i, BLACK);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
@@ -153,11 +153,11 @@ void testBanner() {
     // --- arduboy.drawBitmap ~ Sprites::drawSelfMasked ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
-                arduboy.drawBitmap(x, y, imagesBanner::bitmaps::std, bannerWidth, bannerHeight, WHITE);
+                arduboy.drawBitmap(x, y, imagesBanner::bitmaps::std, imagesBanner::width, imagesBanner::height, WHITE);
             }
         }
         benchEndTime = millis();
@@ -170,11 +170,11 @@ void testBanner() {
     // --- arduboy.drawSlowXYBitmap ~  Sprites::drawSelfMasked ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
-                arduboy.drawSlowXYBitmap(x, y, imagesBanner::bitmaps::slow, bannerWidth, bannerHeight, WHITE);
+                arduboy.drawSlowXYBitmap(x, y, imagesBanner::bitmaps::slow, imagesBanner::width, imagesBanner::height, WHITE);
             }
         }
         benchEndTime = millis();
@@ -188,7 +188,7 @@ void testBanner() {
     // --- arduboy.drawCompressed ~  Sprites::drawSelfMasked ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
@@ -213,7 +213,7 @@ void testBanner() {
     // --- Sprites::drawPlusMask ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
@@ -230,7 +230,7 @@ void testBanner() {
     // --- SpritesB::drawPlusMask ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
@@ -247,7 +247,7 @@ void testBanner() {
     // --- Sprites::drawExternalMask ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
@@ -264,7 +264,7 @@ void testBanner() {
     // --- SpritesB::drawExternalMask ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
@@ -281,7 +281,7 @@ void testBanner() {
     // --- Sprites::drawSelfMasked with extra masking step ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
@@ -299,7 +299,7 @@ void testBanner() {
     // --- SpritesB::drawSelfMasked with extra masking step ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
@@ -317,12 +317,12 @@ void testBanner() {
     // --- arduboy.drawBitmap with extra masking step ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
-                arduboy.drawBitmap(x, y, imagesBanner::bitmaps::stdMask, bannerWidth, bannerHeight, BLACK);
-                arduboy.drawBitmap(x, y, imagesBanner::bitmaps::std, bannerWidth, bannerHeight, WHITE);
+                arduboy.drawBitmap(x, y, imagesBanner::bitmaps::stdMask, imagesBanner::width, imagesBanner::height, BLACK);
+                arduboy.drawBitmap(x, y, imagesBanner::bitmaps::std, imagesBanner::width, imagesBanner::height, WHITE);
             }
         }
         benchEndTime = millis();
@@ -335,12 +335,12 @@ void testBanner() {
     // --- arduboy.drawSlowXYBitmap with extra masking step ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
-                arduboy.drawSlowXYBitmap(x, y, imagesBanner::bitmaps::slowMask, bannerWidth, bannerHeight, BLACK);
-                arduboy.drawSlowXYBitmap(x, y, imagesBanner::bitmaps::slow, bannerWidth, bannerHeight, WHITE);
+                arduboy.drawSlowXYBitmap(x, y, imagesBanner::bitmaps::slowMask, imagesBanner::width, imagesBanner::height, BLACK);
+                arduboy.drawSlowXYBitmap(x, y, imagesBanner::bitmaps::slow, imagesBanner::width, imagesBanner::height, WHITE);
             }
         }
         benchEndTime = millis();
@@ -354,7 +354,7 @@ void testBanner() {
     // --- arduboy.drawCompressed with extra masking step ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
-        candyCaneScreen(i);
+        fillScreenCandyCane(i);
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {

@@ -8,7 +8,7 @@ Arduboy2 arduboy;
 
 #ifdef TEST_FX_CHIP
 #include <ArduboyFX.h>      // Access the FX external flash
-#include "fxdata/fxdata.h"  // References to FX data
+// #include "fxdata/fxdata.h"  // References to FX data
 #endif
 
 #include "src/images/Images.h"
@@ -36,7 +36,7 @@ void setup() {
 }
 
 
-void loop() {} // Blank
+void loop() {/*-Blank-*/}
 
 
 void blitRace() {

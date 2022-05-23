@@ -10,16 +10,17 @@
  */
 
 
-constexpr uint8_t monopixWidth = 1;
-constexpr uint8_t monopixHeight = 1;
-
 
 namespace images1x1 {
+
+    constexpr uint8_t width = 1;
+    constexpr uint8_t height = 1;
+
 
     namespace sprites {
 
         const uint8_t PROGMEM std[] = {
-            monopixWidth, monopixHeight, // 1x1 px image
+            images1x1::width, images1x1::height, // 1x1 px image
             0x01   // ▓▓▓▓▓▓▓░
         };
 
@@ -29,12 +30,12 @@ namespace images1x1 {
         };
 
         const uint8_t PROGMEM eraseMask[] = {
-            monopixWidth, monopixHeight, // 1x1 px image
+            images1x1::width, images1x1::height, // 1x1 px image
             0x01   // ▓▓▓▓▓▓▓░
         };
 
         const uint8_t PROGMEM plusMask[] = {
-            monopixWidth, monopixHeight, // 1x1 px image
+            images1x1::width, images1x1::height, // 1x1 px image
             0x01, 0x01   // ▓▓▓▓▓▓▓░ Image  ▓▓▓▓▓▓▓░ +Mask  ·······░ Sprite            
         };
 
@@ -66,12 +67,12 @@ namespace images1x1 {
 
 #ifdef TEST_COMPRESSED
         const uint8_t PROGMEM cabi[] = {
-            (monopixWidth-1), (monopixHeight-1), // 1x1 px image
+            (images1x1::width-1), (images1x1::height-1), // 1x1 px image
             0xd3
         };
 
         const uint8_t PROGMEM cabiMask[] = {
-            (monopixWidth-1), (monopixHeight-1), // 1x1 px image
+            (images1x1::width-1), (images1x1::height-1), // 1x1 px image
             0xd3
         };
 #endif

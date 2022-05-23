@@ -54,7 +54,7 @@ void invertScreen (bool invert = false) {
 }
 
 
-void candyCaneScreen(uint8_t offset, uint8_t color = WHITE) {
+void fillScreenCandyCane(uint8_t offset, uint8_t color = WHITE) {
     if (offset < 2) {
         offset = 2;
     }

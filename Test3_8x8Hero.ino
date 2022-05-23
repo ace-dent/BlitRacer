@@ -17,12 +17,12 @@ void test8x8Hero(bool byteAligned) {
 
 
     // Parameters for rendering loops
-    constexpr int16_t xStart = -heroWidth;
-    constexpr int16_t yStart = -heroHeight;
-    constexpr int16_t xEnd = WIDTH + heroWidth;
-    constexpr int16_t yEnd = HEIGHT + heroHeight;
-    uint8_t xStep = heroWidth;
-    uint8_t yStep = heroHeight;
+    constexpr int16_t xStart = -images8x8::width;
+    constexpr int16_t yStart = -images8x8::height;
+    constexpr int16_t xEnd = WIDTH + images8x8::width;
+    constexpr int16_t yEnd = HEIGHT + images8x8::height;
+    uint8_t xStep = images8x8::width;
+    uint8_t yStep = images8x8::height;
     if (!byteAligned) {
         xStep -= 1;
         yStep -= 1;  
@@ -157,7 +157,7 @@ void test8x8Hero(bool byteAligned) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
-                arduboy.drawBitmap(x, y, images8x8::bitmaps::std[(i % 3)], heroWidth, heroHeight, WHITE);
+                arduboy.drawBitmap(x, y, images8x8::bitmaps::std[(i % 3)], images8x8::width, images8x8::height, WHITE);
             }
         }
         benchEndTime = millis();
@@ -173,7 +173,7 @@ void test8x8Hero(bool byteAligned) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
-                arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slow[(i % 3)], heroWidth, heroHeight, WHITE);
+                arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slow[(i % 3)], images8x8::width, images8x8::height, WHITE);
             }
         }
         benchEndTime = millis();
@@ -312,8 +312,8 @@ void test8x8Hero(bool byteAligned) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
-                arduboy.drawBitmap(x, y, images8x8::bitmaps::stdMask[(i % 3)], heroWidth, heroHeight, BLACK);
-                arduboy.drawBitmap(x, y, images8x8::bitmaps::std[(i % 3)], heroWidth, heroHeight, WHITE);
+                arduboy.drawBitmap(x, y, images8x8::bitmaps::stdMask[(i % 3)], images8x8::width, images8x8::height, BLACK);
+                arduboy.drawBitmap(x, y, images8x8::bitmaps::std[(i % 3)], images8x8::width, images8x8::height, WHITE);
             }
         }
         benchEndTime = millis();
@@ -329,8 +329,8 @@ void test8x8Hero(bool byteAligned) {
         benchStartTime = millis();
         for (int16_t y = yStart; y < yEnd; y = y + yStep) {
             for (int16_t x = xStart; x < xEnd; x = x + xStep) {
-                arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slowMask[(i % 3)], heroWidth, heroHeight, BLACK);
-                arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slow[(i % 3)], heroWidth, heroHeight, WHITE);
+                arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slowMask[(i % 3)], images8x8::width, images8x8::height, BLACK);
+                arduboy.drawSlowXYBitmap(x, y, images8x8::bitmaps::slow[(i % 3)], images8x8::width, images8x8::height, WHITE);
             }
         }
         benchEndTime = millis();
