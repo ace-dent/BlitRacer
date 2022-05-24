@@ -58,7 +58,7 @@ A range of conditions (dimensions, frames of animation, byte alignment on render
 1. Monopixel (1x1px)
 2. 
 3. 'Hero' sprite (8x8px)
-4. 
+4. Chunky sprite (14x14px)
 5. Banner style logo (106x18px)
 6. 
 7. 
@@ -70,7 +70,7 @@ Essentials (Race Stages):
 - [x] *1* ~ 1x1 pixel
 - [ ] *2* ~ Font
 - [x] *3* ~ 8x8 Hero (with short animation)
-- [ ] *4* ~ Chunky sprite (not modulo 8)
+- [x] *4* ~ Chunky sprite (not modulo 8)
 - [x] *5* ~ Banner
 - [ ] *6* ~ Full screen
 - [ ] *7* ~ Animation (many frames)

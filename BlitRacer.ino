@@ -1,4 +1,4 @@
-#define TEST_SPRITES_B
+//#define TEST_SPRITES_B
 #define TEST_SLOW_BITMAP
 #define TEST_COMPRESSED
 // #define TEST_FX_CHIP
@@ -8,7 +8,7 @@ Arduboy2 arduboy;
 
 #ifdef TEST_FX_CHIP
 #include <ArduboyFX.h>      // Access the FX external flash
-// #include "fxdata/fxdata.h"  // References to FX data
+#include "fxdata/fxdata.h"  // References to FX data
 #endif
 
 #include "src/images/Images.h"
@@ -46,5 +46,6 @@ void blitRace() {
     testMonopixel();    // Single pixel test
     test8x8Hero(true);  // 8x8 sprite, byte aligned
     test8x8Hero(false); // 8x8 sprite, byte unaligned
+    testChunky();       // Chunky 14x14 image test
     testBanner();       // Banner style image test
 }

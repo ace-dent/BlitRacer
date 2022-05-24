@@ -22,7 +22,7 @@ namespace text {
     constexpr char PROGMEM monopixTest[]        = "* Monopixel test    *\n";
     constexpr char PROGMEM heroTest[]           = "* 8x8 'Hero' test   *\n";
     constexpr char PROGMEM bannerTest[]         = "* Banner test       *\n";
-    
+    constexpr char PROGMEM chunkyTest[]         = "* Chunky img test   *\n";    
     
     // Common text
     constexpr char PROGMEM blank[]              = "";
