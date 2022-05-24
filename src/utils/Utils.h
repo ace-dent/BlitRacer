@@ -35,6 +35,8 @@ void benchmark(uint16_t loops, const char* testTitle = "", uint8_t testIteration
 }
 
 
+// Screen drawing utilities
+
 void invertScreen (bool invert = false) {
     if (invert) {
         arduboy.fillScreen(WHITE);
@@ -60,6 +62,19 @@ void fillScreenCandyCane(uint8_t offset, uint8_t color = WHITE) {
     }
     for (uint16_t y = 0; y < (WIDTH*2); y+=offset) {
         arduboy.drawLine(y, 0, 0, y, color);
+    }
+}
+
+void fillScreenChequerBoard() {
+    for (uint16_t i = 0; i < ((WIDTH*HEIGHT)/8); i+=2) {
+        arduboy.sBuffer[i]  =0xAA;
+        arduboy.sBuffer[i+1]=0x55;
+    }
+}
+
+void fillScreenTreePattern() {
+    for (uint16_t i = 0; i < ((WIDTH*HEIGHT)/8); i++) {
+        arduboy.sBuffer[i]  = i ^ (i<<1);
     }
 }
 
