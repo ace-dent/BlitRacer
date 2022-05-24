@@ -20,7 +20,8 @@ namespace text {
     constexpr char PROGMEM loopOverhead[]       = "Loop overhead       : ";
     
     constexpr char PROGMEM monopixTest[]        = "* Monopixel test    *\n";
-    constexpr char PROGMEM heroTest[]           = "* 8x8 'Hero' test   *\n";
+    constexpr char PROGMEM heroTest[]           = "* 8x8 aligned test  *\n";
+    constexpr char PROGMEM heroTestUnaligned[]  = "* 8x8 unaligned test*\n";
     constexpr char PROGMEM bannerTest[]         = "* Banner test       *\n";
     constexpr char PROGMEM chunkyTest[]         = "* Chunky img test   *\n";    
     
@@ -29,8 +30,6 @@ namespace text {
     constexpr char PROGMEM titleBreak[]         = "*********************\n\n";
     constexpr char PROGMEM horizontalRule[]     = "---------------------\n\n";
     constexpr char PROGMEM micros[]             = " µs\n";
-    constexpr char PROGMEM byteAlign[]          = "   - Byte aligned\n";
-    constexpr char PROGMEM byteUnalign[]        = "   - Byte unaligned\n";
 
     // Sprites functions
     constexpr char PROGMEM spritesOverwrite[]   = "Sprites Overwrite   : ";
@@ -98,4 +97,13 @@ void logConsoleAveragedResult(const char* str, uint8_t sampleCount) {
     logConsole(str);                            // Function tested
     Serial.print(benchAverage,1);               // Result (to 1 d.p.)
     logConsole(text::micros);                   // " µs\n"
+}
+
+// Output the title of the test
+void logTestTitle(const char* str) {
+    arduboy.clear();
+    logArduboy(str);
+    logConsole(str);                            // "* Title of test     *\n"
+    logConsole(text::titleBreak);               // "*********************\n\n"
+    arduboy.clear();
 }

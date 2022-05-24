@@ -5,12 +5,7 @@
 
 void testBanner() {
 
-    arduboy.clear();
-    logArduboy(text::bannerTest);
-    logConsole(text::bannerTest);               // "* Banner test       *\n"
-    logConsole(text::titleBreak);               // "*********************\n\n"
-    arduboy.clear();
-
+    logTestTitle(text::bannerTest);
 
     // Parameters for rendering loops
     constexpr int16_t xStart = ((WIDTH-imagesBanner::width)/2);
@@ -19,7 +14,6 @@ void testBanner() {
     constexpr int16_t yEnd = HEIGHT + imagesBanner::height;
     uint8_t xStep = imagesBanner::width+10;  // Draw just 1px at the edge, rest off screen
     uint8_t yStep = imagesBanner::height+19; // Draw just 1px at the edge, rest off screen
-
 
     // Determine the total count for the inner x,y loops
     // This does not change between tests of different functions within a set
@@ -167,7 +161,7 @@ void testBanner() {
 
 
 #ifdef TEST_SLOW_BITMAP
-    // --- arduboy.drawSlowXYBitmap ~  Sprites::drawSelfMasked ---
+    // --- arduboy.drawSlowXYBitmap ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         fillScreenCandyCane(i);
@@ -185,7 +179,7 @@ void testBanner() {
 
 
 #ifdef TEST_COMPRESSED
-    // --- arduboy.drawCompressed ~  Sprites::drawSelfMasked ---
+    // --- arduboy.drawCompressed ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         fillScreenCandyCane(i);

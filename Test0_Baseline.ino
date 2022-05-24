@@ -4,9 +4,8 @@
 
 void testBaseline(void) {
 
-    logArduboy(text::baselineTest);
-    logConsole(text::baselineTest);             // "* CPU baseline test *\n"
-    logConsole(text::titleBreak);               // "*********************\n\n"
+    logTestTitle(text::baselineTest);
+
     logConsole(text::FCPU);                     // "F_CPU = "
     Serial.print(F_CPU,DEC);                    // 16000000 (expected)
     logConsole(text::hertz);                    // " Hz\n"

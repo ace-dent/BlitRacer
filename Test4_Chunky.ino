@@ -5,12 +5,7 @@
 
 void testChunky() {
 
-    arduboy.clear();
-    logArduboy(text::chunkyTest);
-    logConsole(text::chunkyTest);               // "* Chunky img test   *\n"
-    logConsole(text::titleBreak);               // "*********************\n\n"
-    arduboy.clear();
-
+    logTestTitle(text::chunkyTest);
 
     // Parameters for rendering loops
     constexpr int16_t xStart = -imagesChunky::width;
@@ -19,7 +14,6 @@ void testChunky() {
     constexpr int16_t yEnd = HEIGHT + imagesChunky::height;
     uint8_t xStep = 1;
     uint8_t yStep = imagesChunky::height +1;
-
 
     // Determine the total count for the inner x,y loops
     // This does not change between tests of different functions within a set
@@ -144,7 +138,7 @@ void testChunky() {
     invertScreen(false);
 
 
-    // --- arduboy.drawBitmap ~ Sprites::drawSelfMasked ---
+    // --- arduboy.drawBitmap ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
@@ -160,7 +154,7 @@ void testChunky() {
 
 
 #ifdef TEST_SLOW_BITMAP
-    // --- arduboy.drawSlowXYBitmap ~  Sprites::drawSelfMasked ---
+    // --- arduboy.drawSlowXYBitmap ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
@@ -177,7 +171,7 @@ void testChunky() {
 
 
 #ifdef TEST_COMPRESSED
-    // --- arduboy.drawCompressed ~  Sprites::drawSelfMasked ---
+    // --- arduboy.drawCompressed ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();

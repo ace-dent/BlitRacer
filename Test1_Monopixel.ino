@@ -5,12 +5,7 @@
 
 void testMonopixel() {
 
-    arduboy.clear();
-    logArduboy(text::monopixTest);
-    logConsole(text::monopixTest);          // "* Monopixel test    *\n"
-    logConsole(text::titleBreak);           // "*********************\n\n"
-    arduboy.clear();
-
+    logTestTitle(text::monopixTest);
 
     // Parameters for rendering loops
     constexpr int16_t xStart = 0;
@@ -161,7 +156,7 @@ void testMonopixel() {
     invertScreen(false); 
 
 
-    // --- arduboy.drawBitmap ~ Sprites::drawSelfMasked ---
+    // --- arduboy.drawBitmap ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
@@ -180,7 +175,7 @@ void testMonopixel() {
 
 
 #ifdef TEST_SLOW_BITMAP
-    // --- arduboy.drawSlowXYBitmap ~  Sprites::drawSelfMasked ---
+    // --- arduboy.drawSlowXYBitmap ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
@@ -200,7 +195,7 @@ void testMonopixel() {
 
 
 #ifdef TEST_COMPRESSED
-    // --- arduboy.drawCompressed ~  Sprites::drawSelfMasked ---
+    // --- arduboy.drawCompressed ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();

@@ -4,17 +4,11 @@
 
 void test8x8Hero(bool byteAligned) {
 
-    arduboy.clear();
-    logArduboy(text::heroTest);
-    logConsole(text::heroTest);                 // "* 8x8 'Hero' test   *\n"
     if (byteAligned) {
-        logConsole(text::byteAlign);            // "   - Byte aligned\n"
+        logTestTitle(text::heroTest);           // "* 8x8 aligned test  *\n"
     } else {
-        logConsole(text::byteUnalign);          // "   - Byte unaligned\n"
+        logTestTitle(text::heroTestUnaligned);  // "* 8x8 Unaligned test*\n"
     }
-    logConsole(text::titleBreak);               // "*********************\n\n"
-    arduboy.clear();
-
 
     // Parameters for rendering loops
     constexpr int16_t xStart = -images8x8::width;
@@ -151,7 +145,7 @@ void test8x8Hero(bool byteAligned) {
     invertScreen(false);
 
 
-    // --- arduboy.drawBitmap ~ Sprites::drawSelfMasked ---
+    // --- arduboy.drawBitmap ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
@@ -167,7 +161,7 @@ void test8x8Hero(bool byteAligned) {
 
 
 #ifdef TEST_SLOW_BITMAP
-    // --- arduboy.drawSlowXYBitmap ~  Sprites::drawSelfMasked ---
+    // --- arduboy.drawSlowXYBitmap ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
@@ -184,7 +178,7 @@ void test8x8Hero(bool byteAligned) {
 
 
 #ifdef TEST_COMPRESSED
-    // --- arduboy.drawCompressed ~  Sprites::drawSelfMasked ---
+    // --- arduboy.drawCompressed ---
     benchAverage = 0.0F; // Reset running average
     for (uint8_t i = 0; i < testRepeats; i = i + 1) {
         benchStartTime = millis();
